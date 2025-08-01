@@ -1,0 +1,57 @@
+Changes:
+
+Remove: 
+
+"TLS only requires authentication of the server side
+ of the communication channel; authentication of the client
+ side is optional."
+
+Unfortunately not true, as described in "Opportunistic TLS" below
+
+Remove: 
+"Note that with typical email use of TLS, authentication only is
+ performed for the target receiving server and is not done for
+ the sending client. That is, it serves to validate that the
+ connection has been made to the intended server, but does not
+ validate who initiated it."
+
+Same reason.
+
+
+Enforced TLS:
+
+Old:
+
+"While they differ in their implementation details, receiving
+servers relying on either protocol are stating that they
+only accept mail if the transmission can be encrypted with
+TLS, and a failure to negotiate a secure connection MUST
+result in the sending client refusing to transmit the
+message. Support for both protocols is increasing, but is
+not yet mandatory."
+
+New:
+
+"While they differ in their implementation details, receiving
+servers relying on either protocol can state that they
+only accept mail if the transmission can be encrypted with
+TLS. Support for both protocols is increasing, but is
+not yet mandatory."
+
+At least MTA-STS has modes that don't require the client MUST use encryption. Better not to restate the requirements in those drafts.
+
+Move Message-Level Confidentiality up under TLS to make other edits easier.
+
+Remove:
+"If the sending client does not implement or understand the protocol requested by the receiving server, the sending client will use Opportunistic TLS or clear-text to transmit the message."
+
+This is only true sometimes, I think. Its contradicts the MUST removed above, and the "there is no fallback" text above as well. For example, it does not describe GMail:
+https://support.google.com/a/answer/9261504?hl=en
+
+That's why they have TLS Reporting too.
+
+Remove:
+", and most receiving servers implementations will be expected to be capable of receiving such messages."
+
+But still leaves the requirement to disable it.
+
