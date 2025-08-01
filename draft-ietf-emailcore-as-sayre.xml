@@ -20,12 +20,12 @@
 <!-- When no, put comments at end in comments section,
      otherwise, put inline -->
 <?rfc inline="yes" ?>
-<!-- When yes, insert editing marks: editing marks consist of a 
-     string such as <29> printed in the blank line at the 
+<!-- When yes, insert editing marks: editing marks consist of a
+     string such as <29> printed in the blank line at the
      beginning of each paragraph of text. -->
 <?rfc editing="no" ?>
-<!-- Create Table of Contents (ToC) and set some options for it.  
-     Note the ToC may be omitted for very short documents,but idnits insists on a ToC 
+<!-- Create Table of Contents (ToC) and set some options for it.
+     Note the ToC may be omitted for very short documents,but idnits insists on a ToC
      if the document has more than 15 pages. -->
 <?rfc toc="yes"?>
 <?rfc tocompact="yes"?>
@@ -34,16 +34,16 @@
 <!-- Sets the number of levels of sections/subsections... in ToC.
    Can be overridden by 'toc="include"/"exclude"' on the section
    element-->
-<!-- Choose the options for the references. 
-     Some like symbolic tags in the references (and citations) and others prefer 
+<!-- Choose the options for the references.
+     Some like symbolic tags in the references (and citations) and others prefer
      numbers. The RFC Editor always uses symbolic tags.
      The tags used are the anchor attributes of the references. -->
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes" ?>
 <!-- If "yes", causes the references to be sorted in order of tags.
      This doesn't have any effect unless symrefs is "yes" also. -->
-<!-- These two save paper: Just setting compact to "yes" makes savings by not starting each 
-     main section on a new page but does not omit the blank lines between list items. 
+<!-- These two save paper: Just setting compact to "yes" makes savings by not starting each
+     main section on a new page but does not omit the blank lines between list items.
      If subcompact is also "yes" the blank lines between list items are also omitted. -->
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
@@ -51,10 +51,10 @@
 <!-- Information about the document.
      category values: std, bcp, info, exp, and historic
      For Internet-Drafts, specify attribute "ipr".
-         original ipr values are: full3978, noModification3978, noDerivatives3978), 
+         original ipr values are: full3978, noModification3978, noDerivatives3978),
          2008 IETF Trust versions: trust200811, noModificationTrust200811, noDerivativeTrust200811
          2009/Current: trust200902, noModificationTrust200902, noDerivativesTrust200902, pre5378Trust200902
-     Also for Internet-Drafts, you must specify a value for attributes "docName" which is 
+     Also for Internet-Drafts, you must specify a value for attributes "docName" which is
         typically the file name under which it is filed but need not be.
      If relevant, "iprExtract" may be specified to denote the anchor attribute value of a
         section that can be extracted for separate publication, it is only useful when the value
@@ -79,14 +79,14 @@
      version="3">
   <!-- xml2rfc v2v3 conversion 3.15.0 -->
   <!-- obsoletes='2821, 821' updates='1123'
-        category='std' (bcp, info, exp, historic)  -->   
+        category='std' (bcp, info, exp, historic)  -->
 
 
   <!-- ***** FRONT MATTER ***** -->
 
   <front>
     <title abbrev="Core Email A/S">Applicability Statement for IETF
-    Core Email Protocols</title> 
+    Core Email Protocols</title>
     <seriesInfo name="Internet-Draft" value="draft-ietf-emailcore-as-19"/>
     <!-- add 'role="editor"' below for the editors if appropriate -->
     <author fullname="John C Klensin" initials="J.C."
@@ -217,7 +217,7 @@
       <t> Over the years since <xref target="RFC5321"/> was
         published in October 2008, usage of SMTP has evolved,
 		machines and
-	  <!-- 20250226 JcK -->		
+	  <!-- 20250226 JcK -->
         network speeds have increased, and the frequency with which most
         SMTP senders and receivers have to be prepared to deal with
         systems that are disconnected from the Internet for long
@@ -235,7 +235,7 @@
       </t>
 
 	  <t> This section describes
-	  <!-- 20250226 JcK -->		 
+	  <!-- 20250226 JcK -->
 		 describes configuration options and other considerations
 		 about SMTP that may be appropriate under various circumstances
       and discusses the applicability of other protocols that
@@ -279,7 +279,7 @@
           syntactically valid, mail to these addresses has never
           worked reliably.
           A handful of country code TLDs have top level MX records but
-          they have never been widely used nor 
+          they have never been widely used nor
           well supported. In 2013 <xref target="RFC7085"/> found 18
           TLDs with MX records, which dropped to 17 in 2021 despite
           many new TLDs having been added. </t>
@@ -303,11 +303,11 @@
         have become ubiquitous.
         As a result, the following extensions MUST be supported by SMTP
         senders and receivers:</t>
-        
+
         <ul spacing="normal">
           <li>
             <xref target="RFC3207">Secure SMTP over Transport Layer
-			   Security</xref> 
+			   Security</xref>
 			<!-- 20250226 JcK -->
 		  (Cf. discussion in <xref target="tls"/>.)</li>
           <li>
@@ -346,7 +346,7 @@
           senders in determining the exact reason for a transmission
           failure in a machine-readable, language-independent manner,
           thus allowing them to present more detailed and
-          language-specific error messages to users. 
+          language-specific error messages to users.
 
           Given the usefulness of these enhanced codes, SMTP receivers
           are RECOMMENDED to implement the <xref target="RFC2034">SMTP
@@ -355,9 +355,9 @@
         </t>
       </section>
     </section>
-	<section numbered="true" toc="default">   
+	<section numbered="true" toc="default">
 	   <name>Applicability of Message Format Provisions</name>
-	  <!-- 20250226 JcK -->		   
+	  <!-- 20250226 JcK -->
       <t> This section describes considerations about the Internet Message
         Format that may be appropriate under various circumstances. </t>
       <section numbered="true" anchor="empty-quoted" toc="default">
@@ -469,7 +469,7 @@
 
         <t>SMTP specifies that the local-part of an email address is
       case-sensitive (see
-      <xref target="I-D.ietf-emailcore-rfc5321bis" 
+      <xref target="I-D.ietf-emailcore-rfc5321bis"
             section="2.4" sectionFormat="of"/>):</t>
 
       <sourcecode>
@@ -518,7 +518,7 @@
 
       <section anchor="non-ascii" numbered="true" toc="default">
         <name>Use of non-ASCII Characters</name>
-	  <!-- 20250226 JcK -->	
+	  <!-- 20250226 JcK -->
         <t>Proper generation and transmission of email addresses
         containing non-ASCII characters is discussed in the SMTPUTF8
 		documents
@@ -592,7 +592,7 @@
         grammar for a 'Mailbox' in
         <xref target="I-D.ietf-emailcore-rfc5321bis" section="4.1.2"/>.
         Specifically, the HTML form grammar:</t>
-        
+
         <ul spacing="normal">
           <li>Does not supported quoted strings.</li>
           <li>Only allows a limited set of characters in domains.</li>
@@ -629,7 +629,7 @@
         Mail Extensions (MIME)</xref> specification and its
         predecessors have remained separate from the
         <xref target="I-D.ietf-emailcore-rfc5322bis">Internet Message
-        Format (IMF)</xref> 
+        Format (IMF)</xref>
         specification and its predecessors, MIME features such as
         non-textual message bodies, multi-part message bodies, and the
 		use of character sets other than US-ASCII in message bodies
@@ -715,7 +715,7 @@
           mean that future methods might not be developed.</t>
 
           <t>TLS only provides confidentiality while the message is in
-          transit. See <xref="limitations">Confidentiality Limitations</xref>.
+          transit. See <xref target="limitations">Confidentiality Limitations</xref>.
           There is no guarantee that the message will be
           stored in encrypted fashion at its destination. In fact,
           storage in plain text should be expected!</t>
@@ -792,10 +792,10 @@
       </section>
       <section numbered="true" anchor="limitations" toc="default">
         <name>Confidentiality Limitations</name>
-        <t>Technologies like TLS can encrypt the entirety of a 
+        <t>Technologies like TLS can encrypt the entirety of a
         message in transit, but SMTP servers require access to at least
         some message headers in order to function. Some of the protocols
-        listed in <xref="message-conf">Message-Level Confidentiality</xref>
+        listed in <xref target="message-conf">Message-Level Confidentiality</xref>
         only cover the message body, and none of the headers. See the Privacy
         Considerations in
         <xref target="I-D.ietf-lamps-header-protection" section="11">
@@ -949,14 +949,14 @@
       <t>Security and privacy considerations are discussed throughout
 		 this document as they pertain to the referenced specifications.
 		 <!-- 20250226 JcK -->
-	  Special note should be taken of the interaction between 
+	  Special note should be taken of the interaction between
 	  confidentiality and authentication mechanism that are applicable
 	  to Internet links and therefore potentially sensitive to the
 	  multi-hop design of SMTP.  Unless the relevant messages and
 	  mechanisms are protected from tampering or content exposure on
 	  systems that are the endpoints of those links, the security of
 	  the mechanisms depends on trust in those intermediate
-	  endpoints. </t> 
+	  endpoints. </t>
     </section>
   </middle>
   <!--  *****BACK MATTER ***** -->
@@ -1034,7 +1034,7 @@
         <!-- Right back at the beginning we defined an entity which (we asserted) would contain
              XML needed for a reference... this is where we use it. -->
 
-      <!-- A reference written by by an organization not a person. 
+      <!-- A reference written by by an organization not a person.
            NOTE: This reference is not referenced: this is immoral in I-Ds and RFCs, but may not
            be in other technical documents. It will be flagged when strict="yes". -->
 
@@ -1152,7 +1152,7 @@
           <li>Acknowledge the existence of port 465 for submission
           (issue #80).</li>
           <li>Remove "Use of Time Zones in Date and Received Header
-          Fields" placeholder (issue #66).</li> 
+          Fields" placeholder (issue #66).</li>
           <li>Miscellaneous editorial changes.</li>
         </ul>
       </section>
@@ -1241,13 +1241,13 @@
           <li>Applied (with some editorial changes), Tero Kivinen's proposed
           text to <xref target="conf-auth"/>. </li>
         </ul>
-      </section> 
+      </section>
       <section numbered="true" toc="default">
         <name>Changes from draft-ietf-emailcore-as-14 (2025-02-27) to -15</name>
         <ul spacing="normal">
           <li>Miscellaneous editorial changes</li>
         </ul>
-      </section> 
+      </section>
       <section numbered="true" toc="default">
         <name>Changes from draft-ietf-emailcore-as-15 (2025-03-18) to -16</name>
         <ul spacing="normal">
@@ -1255,7 +1255,7 @@
 	  copy is associated with multiple recipients from multiple
 	  SMTP RCPT commands" to "SHOULD NOT".</li>
           <li>Reintroduced examples of non-interoperable local-parts
-	  containing empty quoted strings (issue 
+	  containing empty quoted strings (issue
           <eref
               target="https://github.com/ietf-wg-emailcore/emailcore/issues/94">
             #93</eref>).
@@ -1263,7 +1263,7 @@
           <li>Added short descriptions of SPF and DKIM, and added
 	  S/MIME, OpenPGP, and Header Protection for Cryptographically
 	  Protected E-mail as methods of Message-Level Authentication
-	  (issues 
+	  (issues
           <eref
               target="https://github.com/ietf-wg-emailcore/emailcore/issues/94">
             #110</eref>,
@@ -1275,7 +1275,7 @@
             #133</eref>).
 	  </li>
         </ul>
-      </section> 
+      </section>
       <section numbered="true" toc="default">
         <name>Changes from draft-ietf-emailcore-as-16 to -17</name>
         <ul spacing="normal">
@@ -1296,20 +1296,20 @@
           </li>
 
           <li>Updated DKIM description to use a slight modification to
-          the first sentence of RFC 6376 Introduction (issue  
+          the first sentence of RFC 6376 Introduction (issue
           <eref
               target="https://github.com/ietf-wg-emailcore/emailcore/issues/138">
             #138</eref>).
           </li>
         </ul>
-      </section> 
+      </section>
       <section numbered="true" toc="default">
         <name>Changes from draft-ietf-emailcore-as-17 to -18</name>
         <ul spacing="normal">
           <li>Added text clarifying that hop-by-hop confidentiality
           does not guarantee end-to-end confidentiality.</li>
         </ul>
-      </section> 
+      </section>
       <section numbered="true" toc="default">
         <name>Changes from draft-ietf-emailcore-as-18 to -19</name>
         <ul spacing="normal">
@@ -1335,7 +1335,7 @@
             #137</eref>)
           </li>
         </ul>
-      </section> 
+      </section>
    </section>
   </back>
 </rfc>
