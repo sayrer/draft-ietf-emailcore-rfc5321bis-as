@@ -245,7 +245,7 @@ document.onkeydown = function(e) {
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
       <tr id="diff0014"><td></td></tr>
       <tr><td class="lineno"></td><td class="lblock">   <span class="delete">Note that with typical email use of TLS, authentication</span> only <span class="delete">is</span></td><td> </td><td class="rblock">   <span class="insert">TLS</span> only <span class="insert">provides confidentiality while</span> the <span class="insert">message</span> is <span class="insert">in transit.</span></td><td class="lineno"></td></tr>
-      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   performed for</span> the <span class="delete">target receiving server and</span> is <span class="delete">not done for the</span></td><td> </td><td class="rblock"><span class="insert">   See Confidentiality Limitations (Section 8).  In a situation where a</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   performed for</span> the <span class="delete">target receiving server and</span> is <span class="delete">not done for the</span></td><td> </td><td class="rblock"><span class="insert">   See Confidentiality Limitations (Section 8).  In situations where a</span></td><td class="lineno"></td></tr>
       <tr><td class="lineno"></td><td class="lblock"><span class="delete">   sending client.  That is, it serves</span> to <span class="delete">validate that</span> the <span class="delete">connection</span></td><td> </td><td class="rblock"><span class="insert">   message traverses multiple hops through multiple SMTP servers, each</span></td><td class="lineno"></td></tr>
       <tr><td class="lineno"></td><td class="lblock"><span class="delete">   has been made to</span> the <span class="delete">intended server, but does not validate who</span></td><td> </td><td class="rblock"><span class="insert">   intermediate server will have access</span> to the <span class="insert">plain text of the</span></td><td class="lineno"></td></tr>
       <tr><td class="lineno"></td><td class="lblock"><span class="delete">   initiated it.</span></td><td> </td><td class="rblock"><span class="insert">   message.  There is no guarantee that</span> the <span class="insert">message will be stored in an</span></td><td class="lineno"></td></tr>
@@ -356,14 +356,13 @@ document.onkeydown = function(e) {
       <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
       <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">8.  Confidentiality Limitations</span></td><td class="lineno"></td></tr>
       <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
-      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   Technologies like TLS can encrypt the entirety of a message in</span></td><td class="lineno"></td></tr>
-      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   transit, but SMTP servers require access to at least some message</span></td><td class="lineno"></td></tr>
-      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   headers in order to function.  Some of the protocols listed in</span></td><td class="lineno"></td></tr>
-      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   Message-Level Confidentiality (Section 7) only cover the message</span></td><td class="lineno"></td></tr>
-      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   body, and none of the headers.  See the Privacy Considerations in</span></td><td class="lineno"></td></tr>
-      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   Section 11 of Header Protection for Cryptographically Protected</span></td><td class="lineno"></td></tr>
-      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   E-mail [I-D.ietf-lamps-header-protection] for an extended</span></td><td class="lineno"></td></tr>
-      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   explanation.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   While technologies like TLS can encrypt the entirety of a message in</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   transit, SMTP servers require access to at least some message headers</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   in order to function.  Some of the protocols listed in Message-Level</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   Confidentiality (Section 7) only cover the message body, and none of</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   the headers.  See the Privacy Considerations in Section 11 of Header</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   Protection for Cryptographically Protected E-mail</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   [I-D.ietf-lamps-header-protection] for an extended explanation.</span></td><td class="lineno"></td></tr>
       <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
       <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">9.</span>  Confidentiality Requirements</td><td class="lineno"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
@@ -458,7 +457,7 @@ document.onkeydown = function(e) {
 
      <tr><td></td><td class="left"></td><td> </td><td class="right"></td><td></td></tr>
      <tr id="end" bgcolor="gray"><th colspan="5" align="center">&nbsp;End of changes. 28 change blocks.&nbsp;</th></tr>
-     <tr class="stats"><td></td><th><i>68 lines changed or deleted</i></th><th><i> </i></th><th><i>62 lines changed or added</i></th><td></td></tr>
+     <tr class="stats"><td></td><th><i>68 lines changed or deleted</i></th><th><i> </i></th><th><i>61 lines changed or added</i></th><td></td></tr>
      <tr><td colspan="5" align="center" class="small"><br/>This html diff was produced by rfcdiff 1.49. The latest version is available from <a href="https://github.com/ietf-tools/rfcdiff" >https://github.com/ietf-tools/rfcdiff</a> </td></tr>
    </table>
    </body>

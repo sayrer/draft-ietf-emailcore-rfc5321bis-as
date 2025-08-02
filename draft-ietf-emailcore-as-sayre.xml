@@ -716,7 +716,7 @@
 
           <t>TLS only provides confidentiality while the message is in
           transit. See <xref target="limitations">Confidentiality Limitations</xref>.
-          In a situation where a message traverses multiple hops
+          In situations where a message traverses multiple hops
           through multiple SMTP servers, each intermediate server
           will have access to the plain text of the message.
           There is no guarantee that the message will be
@@ -859,8 +859,8 @@
       </section>
       <section numbered="true" anchor="limitations" toc="default">
         <name>Confidentiality Limitations</name>
-        <t>Technologies like TLS can encrypt the entirety of a
-        message in transit, but SMTP servers require access to at least
+        <t>While technologies like TLS can encrypt the entirety of a
+        message in transit, SMTP servers require access to at least
         some message headers in order to function. Some of the protocols
         listed in <xref target="message-conf">Message-Level Confidentiality</xref>
         only cover the message body, and none of the headers. See the Privacy
