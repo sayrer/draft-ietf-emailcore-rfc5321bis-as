@@ -89,15 +89,15 @@ Table of Contents
            Authentication  . . . . . . . . . . . . . . . . . . . . .  12
      6.4.  Message-Level Authentication  . . . . . . . . . . . . . .  12
      6.5.  SMTP Authentication . . . . . . . . . . . . . . . . . . .  13
-   7.  Message-Level Confidentiality . . . . . . . . . . . . . . . .  13
-   8.  Confidentiality Limitations . . . . . . . . . . . . . . . . .  14
-   9.  Confidentiality Requirements  . . . . . . . . . . . . . . . .  14
-   10. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  14
-   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
-   12. Security Considerations . . . . . . . . . . . . . . . . . . .  15
-   13. References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     13.1.  Normative References . . . . . . . . . . . . . . . . . .  15
-     13.2.  Informative References . . . . . . . . . . . . . . . . .  15
+     6.6.  Message-Level Confidentiality . . . . . . . . . . . . . .  13
+     6.7.  Confidentiality Limitations . . . . . . . . . . . . . . .  14
+     6.8.  Confidentiality Requirements  . . . . . . . . . . . . . .  14
+   7.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  14
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  15
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  15
    Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  19
      A.1.  Changes from draft-klensin-email-core-as-00 (2020-03-30) to
             draft-ietf-emailcore-as-00 . . . . . . . . . . . . . . .  19
@@ -592,7 +592,7 @@ Internet-Draft               Core Email A/S                  August 2025
    might not be developed.
 
    TLS only provides confidentiality while the message is in transit.
-   See Confidentiality Limitations (Section 8).  In situations where a
+   See Confidentiality Limitations (Section 6.7).  In situations where a
    message traverses multiple hops through multiple SMTP servers, each
    intermediate server will have access to the plain text of the
    message.  There is no guarantee that the message will be stored in an
@@ -704,7 +704,7 @@ Internet-Draft               Core Email A/S                  August 2025
    commands as described in Section 7.3 of
    [I-D.ietf-emailcore-rfc5321bis].
 
-7.  Message-Level Confidentiality
+6.6.  Message-Level Confidentiality
 
    Protocols such as S/MIME [RFC8551] and OpenPGP [RFC9580] exist to
    allow for message confidentiality outside of the operation of SMTP.
@@ -730,17 +730,17 @@ Klensin & Murchison      Expires 3 February 2026               [Page 13]
 Internet-Draft               Core Email A/S                  August 2025
 
 
-8.  Confidentiality Limitations
+6.7.  Confidentiality Limitations
 
    While technologies like TLS can encrypt the entirety of a message in
    transit, SMTP servers require access to at least some message headers
    in order to function.  Some of the protocols listed in Message-Level
-   Confidentiality (Section 7) only cover the message body, and none of
-   the headers.  See the Privacy Considerations in Section 11 of Header
-   Protection for Cryptographically Protected E-mail
+   Confidentiality (Section 6.6) only cover the message body, and none
+   of the headers.  See the Privacy Considerations in Section 11 of
+   Header Protection for Cryptographically Protected E-mail
    [I-D.ietf-lamps-header-protection] for an extended explanation.
 
-9.  Confidentiality Requirements
+6.8.  Confidentiality Requirements
 
    The vast majority of email sent on the Internet at present does not
    use message-level confidentiality.  It has been recognized that
@@ -758,7 +758,7 @@ Internet-Draft               Core Email A/S                  August 2025
    MUST be configurable to allow for receiving messages without
    confidentiality between servers in order to maximize interoperation.
 
-10.  Acknowledgments
+7.  Acknowledgments
 
    The Emailcore group arose out of discussions on the ietf-smtp group
    over changes and additions that should be made to the core email
@@ -770,7 +770,7 @@ Internet-Draft               Core Email A/S                  August 2025
    text for this document: Dave Crocker, Todd Herr, Tero Kivinen, Barry
    Leiba, John Levine, Alexey Melnikov, Pete Resnick, and E.  Sam.
 
-11.  IANA Considerations
+8.  IANA Considerations
 
    This memo includes no requests to or actions for IANA.  The IANA
    registries associated with the protocol specifications it references
@@ -786,7 +786,7 @@ Klensin & Murchison      Expires 3 February 2026               [Page 14]
 Internet-Draft               Core Email A/S                  August 2025
 
 
-12.  Security Considerations
+9.  Security Considerations
 
    Security and privacy considerations are discussed throughout this
    document as they pertain to the referenced specifications.  Special
@@ -798,9 +798,9 @@ Internet-Draft               Core Email A/S                  August 2025
    those links, the security of the mechanisms depends on trust in those
    intermediate endpoints.
 
-13.  References
+10.  References
 
-13.1.  Normative References
+10.1.  Normative References
 
    [RFC2026]  Bradner, S., "The Internet Standards Process -- Revision
               3", BCP 9, RFC 2026, DOI 10.17487/RFC2026, October 1996,
@@ -820,7 +820,7 @@ Internet-Draft               Core Email A/S                  August 2025
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-13.2.  Informative References
+10.2.  Informative References
 
    [HTML5]    Web Hypertext Application Technology Working Group, "HTML
               Living Standard", 4 October 2022,

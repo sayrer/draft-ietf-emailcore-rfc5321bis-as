@@ -838,7 +838,6 @@
         EXPN commands as described in
         <xref target="I-D.ietf-emailcore-rfc5321bis" section="7.3"/>.</t>
       </section>
-    </section>
       <section numbered="true" anchor="message-conf" toc="default">
         <name>Message-Level Confidentiality</name>
         <t>Protocols such as <xref target="RFC8551">S/MIME</xref>
@@ -892,6 +891,8 @@
         confidentiality between servers in order to maximize
         interoperation.</t>
       </section>
+      </section>
+
 <!--
       <section numbered="true" toc="default">
         <name>Message-Level Authentication</name>
