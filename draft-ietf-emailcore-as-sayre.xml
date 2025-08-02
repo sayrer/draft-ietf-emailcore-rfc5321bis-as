@@ -772,6 +772,70 @@
           only on the receiving server but also the sending client
           supporting the protocol intended to be used.</t>
       </section>
+      <section numbered="true" anchor="message-auth" toc="default">
+        <name>Message-Level Authentication</name>
+        <t>Protocols exist to allow for authentication of different
+        identities associated with an email message:</t>
+	<ul>
+	  <li>
+            <xref target="RFC7208">SPF</xref> provides a method to
+	    ensure that the sending mail server is authorized to
+	    originate mail from the sender's domain.
+	  </li>
+	  <li>
+            <xref target="RFC6376">DKIM</xref> permits a person, role,
+            or organization to claim some responsibility for an email
+            message by associating a <xref target="RFC1034">domain name</xref>
+            with the message, which they are authorized to use.
+	  </li>
+	  <li>
+          <xref target="RFC7489">DMARC</xref>
+          relies on SPF and DKIM to allow for validation of the domain
+          in the visible From header.
+	  </li>
+	  <li>
+	    <xref target="RFC8617">ARC</xref> provides a method for each
+          hop to record results of authentication checks performed at
+          that hop.
+	  </li>
+	  <li>
+	    <xref target="RFC8551">S/MIME</xref>
+            and <xref target="RFC9580">OpenPGP</xref>,
+	    along with
+	    <xref target="I-D.ietf-lamps-header-protection">
+	      Header Protection for
+	      Cryptographically Protected E-mail</xref>,
+	    allow for emails to be digitally signed, thereby providing
+	    a method to verify that an email was actually sent
+	    by the entity claiming to be the sender.
+	  </li>
+	</ul>
+        <t>All of these are outside the scope of this document, as
+          they are outside the scope of SMTP. They deal with
+          validating the authorized usage of one or more domains in an
+          email message, and not with establishing the identity of the
+          receiving server.</t>
+      </section>
+      <section numbered="true" toc="default">
+        <name>SMTP Authentication</name>
+        <t><xref target="RFC4954">SMTP Authentication</xref>,
+          which is often abbreviated as SMTP AUTH,
+          is an extension to SMTP. While its name might suggest
+          that it would be within scope for this section of the
+          Applicability Statement, nothing could be further from the
+          truth.</t>
+        <t>SMTP AUTH defines a method for a client to identify
+          itself to a Message Submission Agent (MSA) when presenting a
+          message for transmission, usually using ports 465 or 587 rather than
+          the traditional port 25. The most common implementation of
+          SMTP AUTH is for a person to present a username and password
+          to their mailbox provider's outbound SMTP server when
+        configuring their MUA for sending mail.</t>
+        <t>SMPT AUTH MAY be used to limit unauthorized use of VRFY and
+        EXPN commands as described in
+        <xref target="I-D.ietf-emailcore-rfc5321bis" section="7.3"/>.</t>
+      </section>
+    </section>
       <section numbered="true" anchor="message-conf" toc="default">
         <name>Message-Level Confidentiality</name>
         <t>Protocols such as <xref target="RFC8551">S/MIME</xref>
@@ -845,71 +909,7 @@
           receiving server.</t>
       </section>
 -->
-      <section numbered="true" anchor="message-auth" toc="default">
-        <name>Message-Level Authentication</name>
-        <t>Protocols exist to allow for authentication of different
-        identities associated with an email message:</t>
-	<ul>
-	  <li>
-            <xref target="RFC7208">SPF</xref> provides a method to
-	    ensure that the sending mail server is authorized to
-	    originate mail from the sender's domain.
-	  </li>
-	  <li>
-            <xref target="RFC6376">DKIM</xref> permits a person, role,
-            or organization to claim some responsibility for an email
-            message by associating a <xref target="RFC1034">domain name</xref>
-            with the message, which they are authorized to use.
-	  </li>
-	  <li>
-          <xref target="RFC7489">DMARC</xref>
-          relies on SPF and DKIM to allow for validation of the domain
-          in the visible From header.
-	  </li>
-	  <li>
-	    <xref target="RFC8617">ARC</xref> provides a method for each
-          hop to record results of authentication checks performed at
-          that hop.
-	  </li>
-	  <li>
-	    <xref target="RFC8551">S/MIME</xref>
-            and <xref target="RFC9580">OpenPGP</xref>,
-	    along with
-	    <xref target="I-D.ietf-lamps-header-protection">
-	      Header Protection for
-	      Cryptographically Protected E-mail</xref>,
-	    allow for emails to be digitally signed, thereby providing
-	    a method to verify that an email was actually sent
-	    by the entity claiming to be the sender.
-	  </li>
-	</ul>
-        <t>All of these are outside the scope of this document, as
-          they are outside the scope of SMTP. They deal with
-          validating the authorized usage of one or more domains in an
-          email message, and not with establishing the identity of the
-          receiving server.</t>
-      </section>
 
-      <section numbered="true" toc="default">
-        <name>SMTP Authentication</name>
-        <t><xref target="RFC4954">SMTP Authentication</xref>,
-          which is often abbreviated as SMTP AUTH,
-          is an extension to SMTP. While its name might suggest
-          that it would be within scope for this section of the
-          Applicability Statement, nothing could be further from the
-          truth.</t>
-        <t>SMTP AUTH defines a method for a client to identify
-          itself to a Message Submission Agent (MSA) when presenting a
-          message for transmission, usually using ports 465 or 587 rather than
-          the traditional port 25. The most common implementation of
-          SMTP AUTH is for a person to present a username and password
-          to their mailbox provider's outbound SMTP server when
-        configuring their MUA for sending mail.</t>
-        <t>SMPT AUTH MAY be used to limit unauthorized use of VRFY and
-        EXPN commands as described in
-        <xref target="I-D.ietf-emailcore-rfc5321bis" section="7.3"/>.</t>
-      </section>
-    </section>
     <!--
       <section title="Other Stuff">
       <t> It is fairly clear that there will be things that do not
