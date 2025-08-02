@@ -716,8 +716,11 @@
 
           <t>TLS only provides confidentiality while the message is in
           transit. See <xref target="limitations">Confidentiality Limitations</xref>.
+          In a situation where a message traverses multiple hops
+          through multiple SMTP servers, each intermediate server
+          will have access to the plain text of the message.
           There is no guarantee that the message will be
-          stored in encrypted fashion at its destination. In fact,
+          stored in an encrypted fashion at its destination. In fact,
           storage in plain text should be expected!</t>
 
         </section> <!-- TLS -->
