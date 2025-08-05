@@ -580,10 +580,9 @@ Internet-Draft               Core Email A/S                  August 2025
 
    *  Authentication is the process of establishing the identity of one
       or more of the endpoints of a communication channel.  TLS can be
-      used without authentication (as described in section 6.2
-      (Section 6.2)).  When it does use authentication, it typically
-      only authenticates the server side of the communication channel
-      (see section 6.3 (Section 6.3)).
+      used without authentication (as described in section 6.2).  When
+      it does use authentication, it typically only authenticates the
+      server side of the communication channel (see section 6.3).
 
    *  The term "confidentiality" describes a state where the data (i.e.,
       the message) is transmitted in a way that it is only visible to
@@ -603,6 +602,7 @@ Internet-Draft               Core Email A/S                  August 2025
    plain text of the message.  There is no guarantee that the message
    will be stored in an encrypted fashion at its destination.  In fact,
    storage in plain text should be expected!
+
 
 
 
