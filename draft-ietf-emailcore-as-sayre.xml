@@ -700,9 +700,13 @@
           </t>
 
           <ul spacing="normal">
-            <li>Authentication is the process of establishing the
-            identity of one or more of the endpoints of a communication
-            channel.</li>
+            <li>Authentication is the process of establishing the identity of one
+            or more of the endpoints of a communication channel. TLS can be
+            used without authentication (as described in
+            <xref target="opp-tls">section 6.2</xref>).
+            When it does use authentication, it typically only authenticates
+            the server side of the communication channel
+            (see <xref target="enforced-tls">section 6.3</xref>).</li>
             <li>The term "confidentiality" describes a state where the
             data (i.e., the message) is transmitted in a way that it is
             only visible to the endpoints of a communication
@@ -716,12 +720,14 @@
 
           <t>TLS only provides confidentiality while the message is in
           transit. See <xref target="limitations">Confidentiality Limitations</xref>.
-          In situations where a message traverses multiple hops
-          through multiple SMTP servers, each intermediate server
-          will have access to the plain text of the message.
-          There is no guarantee that the message will be
-          stored in an encrypted fashion at its destination. In fact,
-          storage in plain text should be expected!</t>
+          Both of the servers will have access to the plain text of the
+          message. Furthermore, in situations where a
+          message traverses multiple hops through multiple SMTP servers, each
+          intermediate server will have also access to the plain text of the
+          message. There is no guarantee that the message will be stored in
+          an encrypted fashion at its destination.  In fact, storage in plain
+          text should be expected!
+          </t>
 
         </section> <!-- TLS -->
       <section numbered="true" anchor="opp-tls" toc="default">
@@ -769,11 +775,13 @@
           not yet mandatory.</t>
         <t>These two protocols differ from Opportunistic TLS in that
           they require receiving server authentication and there is no
-          fallback to sending in the clear if negotiation of an
-          encrypted connection fails.</t>
-        <t>Note that both protocols mentioned in this section rely not
-          only on the receiving server but also the sending client
-          supporting the protocol intended to be used.</t>
+          fallback to sending in the clear.</t>
+        <t>Note that both protocols mentioned in this section rely not only on
+        the receiving server but also the sending client supporting the
+        protocol intended to be used.  If the sending client does not
+        implement the protocol requested by the receiving
+        server, the sending client will use Opportunistic TLS or clear-text
+        to transmit the message.</t>
       </section>
       <section numbered="true" anchor="message-auth" toc="default">
         <name>Message-Level Authentication</name>
@@ -859,10 +867,11 @@
       <section numbered="true" anchor="limitations" toc="default">
         <name>Confidentiality Limitations</name>
         <t>While technologies like TLS can encrypt the entirety of a
-        message in transit, SMTP servers require access to at least
-        some message headers in order to function. Some of the protocols
+        message in transit, it might also be desirable to keep parts of
+        the message confidential from SMTP servers. Some of the protocols
         listed in <xref target="message-conf">Message-Level Confidentiality</xref>
-        only cover the message body, and none of the headers. See the Privacy
+        only cover the message body, and none of the headers. It is difficult and
+        perhaps undesirable to encrypt all message headers. See the Privacy
         Considerations in
         <xref target="I-D.ietf-lamps-header-protection" section="11">
           Header Protection for

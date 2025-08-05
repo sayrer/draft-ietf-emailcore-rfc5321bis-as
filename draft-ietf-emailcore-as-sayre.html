@@ -1,0 +1,2862 @@
+<!DOCTYPE html>
+<html lang="en" class="Internet-Draft">
+<head>
+<meta charset="utf-8">
+<meta content="Common,Latin" name="scripts">
+<meta content="initial-scale=1.0" name="viewport">
+<title>Applicability Statement for IETF Core Email Protocols</title>
+<meta content="John C Klensin" name="author">
+<meta content="Kenneth Murchison" name="author">
+<meta content="
+        Electronic mail is one of the oldest Internet
+      applications that is still in very active use.  While the
+      basic protocols and formats for mail transport and message
+      formats have evolved slowly over the years, events and
+      thinking in more recent years have supplemented those core
+      protocols with additional features and suggestions for their
+      use.
+      This Applicability Statement describes the relationship
+      among many of those protocols and provides guidance and
+      makes recommendations for the use of features of the core
+      protocols. 
+    " name="description">
+<meta content="xml2rfc 3.30.0" name="generator">
+<meta content="SMTP" name="keyword">
+<meta content="MIME" name="keyword">
+<meta content="TLS" name="keyword">
+<meta content="DMARC" name="keyword">
+<meta content="draft-ietf-emailcore-as-19" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.30.0
+    Python 3.12.3
+    ConfigArgParse 1.7.1
+    google-i18n-address 3.1.1
+    intervaltree 3.1.0
+    Jinja2 3.1.6
+    lxml 6.0.0
+    platformdirs 4.3.8
+    pycountry 24.6.1
+    PyYAML 6.0.2
+    requests 2.32.4
+    setuptools 80.9.0
+    wcwidth 0.2.13
+-->
+<link href="draft-ietf-emailcore-as-sayre.xml" rel="alternate" type="application/rfc+xml">
+<link href="#copyright" rel="license">
+<style type="text/css">/*
+
+  NOTE: Changes at the bottom of this file overrides some earlier settings.
+
+  Once the style has stabilized and has been adopted as an official RFC style,
+  this can be consolidated so that style settings occur only in one place, but
+  for now the contents of this file consists first of the initial CSS work as
+  provided to the RFC Formatter (xml2rfc) work, followed by itemized and
+  commented changes found necessary during the development of the v3
+  formatters.
+
+*/
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans'); /* Sans-serif */
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif'); /* Serif (print) */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono'); /* Monospace */
+
+:root {
+  --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+  --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+  --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+}
+
+@viewport {
+  zoom: 1.0;
+}
+@-ms-viewport {
+  width: extend-to-zoom;
+  zoom: 1.0;
+}
+/* general and mobile first */
+html {
+}
+body {
+  max-width: 90%;
+  margin: 1.5em auto;
+  color: #222;
+  background-color: #fff;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-wrap: break-word;
+}
+.ears {
+  display: none;
+}
+
+/* headings */
+#title, h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0 0.5em;
+  font-weight: bold;
+  line-height: 1.3;
+}
+#title {
+  clear: both;
+  border-bottom: 1px solid #ddd;
+  margin: 0 0 0.5em 0;
+  padding: 1em 0 0.5em;
+}
+.author {
+  padding-bottom: 4px;
+}
+h1 {
+  font-size: 26px;
+  margin: 1em 0;
+}
+h2 {
+  font-size: 22px;
+  margin-top: -20px;  /* provide offset for in-page anchors */
+  padding-top: 33px;
+}
+h3 {
+  font-size: 18px;
+  margin-top: -36px;  /* provide offset for in-page anchors */
+  padding-top: 42px;
+}
+h4 {
+  font-size: 16px;
+  margin-top: -36px;  /* provide offset for in-page anchors */
+  padding-top: 42px;
+}
+h5, h6 {
+  font-size: 14px;
+}
+#n-copyright-notice {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+/* general structure */
+p {
+  padding: 0;
+  margin: 0 0 1em 0;
+  text-align: left;
+}
+div, span {
+  position: relative;
+}
+div {
+  margin: 0;
+}
+.alignRight.art-text {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 1em 1em 0;
+  margin-bottom: 1.5em;
+}
+.alignRight.art-text pre {
+  padding: 0;
+}
+.alignRight {
+  margin: 1em 0;
+}
+.alignRight > *:first-child {
+  border: none;
+  margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
+}
+svg {
+  display: block;
+}
+@media print {
+  svg {
+    max-height: 850px;
+    max-width: 660px;
+  }
+}
+svg[font-family~="serif" i], svg [font-family~="serif" i] {
+  font-family: var(--font-serif);
+}
+svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+  font-family: var(--font-sans);
+}
+svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+  font-family: var(--font-mono);
+}
+.alignCenter.art-text {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 1em 1em 0;
+  margin-bottom: 1.5em;
+}
+.alignCenter.art-text pre {
+  padding: 0;
+}
+.alignCenter {
+  margin: 1em 0;
+}
+.alignCenter > *:first-child {
+  display: table;
+  border: none;
+  margin: 0 auto;
+}
+
+/* lists */
+ol, ul {
+  padding: 0;
+  margin: 0 0 1em 2em;
+}
+ol ol, ul ul, ol ul, ul ol {
+  margin-left: 1em;
+}
+li {
+  margin: 0 0 0.25em 0;
+}
+.ulCompact li {
+  margin: 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+}
+ul.empty li, .ulEmpty li {
+  margin-top: 0.5em;
+}
+ul.ulBare, li.ulBare {
+  margin-left: 0em !important;
+}
+ul.compact, .ulCompact,
+ol.compact, .olCompact {
+  line-height: 100%;
+  margin: 0 0 0 2em;
+}
+
+/* definition lists */
+dl {
+}
+dl > dt {
+  float: left;
+  margin-right: 1em;
+}
+/* 
+dl.nohang > dt {
+  float: none;
+}
+*/
+dl > dd {
+  margin-bottom: .8em;
+  min-height: 1.3em;
+}
+dl.compact > dd, .dlCompact > dd {
+  margin-bottom: 0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0em;
+}
+
+/* links */
+a {
+  text-decoration: none;
+}
+a[href] {
+  color: #22e; /* Arlen: WCAG 2019 */
+}
+a[href]:hover {
+  background-color: #f2f2f2;
+}
+figcaption a[href],
+a[href].selfRef {
+  color: #222;
+}
+/* XXX probably not this:
+a.selfRef:hover {
+  background-color: transparent;
+  cursor: default;
+} */
+
+/* Figures */
+tt, code, pre {
+  background-color: #f9f9f9;
+  font-family: var(--font-mono);
+}
+pre {
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 1em;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption {
+  font-style: italic;
+  margin: 0 0 1em 0;
+}
+@media screen {
+  pre {
+    overflow-x: auto;
+    max-width: 100%;
+    max-width: calc(100% - 22px);
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
+  margin-left: 0;
+  padding: 1.2em 2em;
+}
+blockquote {
+  background-color: #f9f9f9;
+  color: #111; /* Arlen: WCAG 2019 */
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin: 1em 0;
+}
+blockquote > *:last-child {
+  margin-bottom: 0;
+}
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+.xref {
+  overflow-wrap: normal;
+}
+
+/* tables */
+table {
+  width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5em 0.75em;
+}
+th {
+  text-align: left;
+  background-color: #e9e9e9;
+}
+tr:nth-child(2n+1) > td {
+  background-color: #f5f5f5;
+}
+table caption {
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+table p {
+  /* XXX to avoid bottom margin on table row signifiers. If paragraphs should
+     be allowed within tables more generally, it would be far better to select on a class. */
+  margin: 0;
+}
+
+/* pilcrow */
+a.pilcrow {
+  color: #666; /* Arlen: AHDJ 2019 */
+  text-decoration: none;
+  visibility: hidden;
+  user-select: none;
+  -ms-user-select: none;
+  -o-user-select:none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+@media screen {
+  aside:hover > a.pilcrow,
+  p:hover > a.pilcrow,
+  blockquote:hover > a.pilcrow,
+  div:hover > a.pilcrow,
+  li:hover > a.pilcrow,
+  pre:hover > a.pilcrow {
+    visibility: visible;
+  }
+  a.pilcrow:hover {
+    background-color: transparent;
+  }
+}
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+}
+.bcp14 {
+  font-variant: small-caps;
+}
+
+.role {
+  font-variant: all-small-caps;
+}
+
+/* info block */
+#identifiers {
+  margin: 0;
+  font-size: 0.9em;
+}
+#identifiers dt {
+  width: 3em;
+  clear: left;
+}
+#identifiers dd {
+  float: left;
+  margin-bottom: 0;
+}
+/* Fix PDF info block run off issue */
+@media print {
+  #identifiers dd {
+    max-width: 100%;
+  }
+}
+#identifiers .authors .author {
+  display: inline-block;
+  margin-right: 1.5em;
+}
+#identifiers .authors .org {
+  font-style: italic;
+}
+
+/* The prepared/rendered info at the very bottom of the page */
+.docInfo {
+  color: #666; /* Arlen: WCAG 2019 */
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 2em;
+}
+.docInfo .prepared {
+  float: left;
+}
+.docInfo .prepared {
+  float: right;
+}
+
+/* table of contents */
+#toc  {
+  padding: 0.75em 0 2em 0;
+  margin-bottom: 1em;
+}
+nav.toc ul {
+  margin: 0 0.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+nav.toc li {
+  line-height: 1.3em;
+  margin: 0.75em 0;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+/* references */
+.references dt {
+  text-align: right;
+  font-weight: bold;
+  min-width: 7em;
+}
+.references dd {
+  margin-left: 8em;
+  overflow: auto;
+}
+
+.refInstance {
+  margin-bottom: 1.25em;
+}
+
+.refSubseries {
+  margin-bottom: 1.25em;
+}
+
+.references .ascii {
+  margin-bottom: 0.25em;
+}
+
+/* index */
+.index ul {
+  margin: 0 0 0 1em;
+  padding: 0;
+  list-style: none;
+}
+.index ul ul {
+  margin: 0;
+}
+.index li {
+  margin: 0;
+  text-indent: -2em;
+  padding-left: 2em;
+  padding-bottom: 5px;
+}
+.indexIndex {
+  margin: 0.5em 0 1em;
+}
+.index a {
+  font-weight: 700;
+}
+/* make the index two-column on all but the smallest screens */
+@media (min-width: 600px) {
+  .index ul {
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+  }
+  .index ul ul {
+    -moz-column-count: 1;
+    -moz-column-gap: 0;
+  }
+}
+
+/* authors */
+address.vcard {
+  font-style: normal;
+  margin: 1em 0;
+}
+
+address.vcard .nameRole {
+  font-weight: 700;
+  margin-left: 0;
+}
+address.vcard .label {
+  font-family: var(--font-sans);
+  margin: 0.5em 0;
+}
+address.vcard .type {
+  display: none;
+}
+.alternative-contact {
+  margin: 1.5em 0 1em;
+}
+hr.addr {
+  border-top: 1px dashed;
+  margin: 0;
+  color: #ddd;
+  max-width: calc(100% - 16px);
+}
+
+/* temporary notes */
+.rfcEditorRemove::before {
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
+  padding: 0.2em;
+  content: "The RFC Editor will remove this note";
+  color: #9e2a00; /* Arlen: WCAG 2019 */
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+}
+.rfcEditorRemove {
+  position: relative;
+  padding-top: 1.8em;
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+  border-radius: 3px;
+}
+.cref {
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+  padding: 2px 4px;
+}
+.crefSource {
+  font-style: italic;
+}
+/* alternative layout for smaller screens */
+@media screen and (max-width: 1023px) {
+  body {
+    padding-top: 2em;
+  }
+  #title {
+    padding: 1em 0;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 20px;
+    margin-top: -18px;  /* provide offset for in-page anchors */
+    padding-top: 38px;
+  }
+  #identifiers dd {
+    max-width: 60%;
+  }
+  #toc {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    background-color: inherit;
+    border-bottom: 1px solid #ccc;
+  }
+  #toc h2 {
+    margin: -1px 0 0 0;
+    padding: 4px 0 4px 6px;
+    padding-right: 1em;
+    min-width: 190px;
+    font-size: 1.1em;
+    text-align: right;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+  }
+  #toc h2::before { /* css hamburger */
+    float: right;
+    position: relative;
+    width: 1em;
+    height: 1px;
+    left: -164px;
+    margin: 6px 0 0 0;
+    background: white none repeat scroll 0 0;
+    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+    content: "";
+  }
+  #toc nav {
+    display: none;
+    padding: 0.5em 1em 1em;
+    overflow: auto;
+    height: calc(100vh - 48px);
+    border-left: 1px solid #ddd;
+  }
+}
+
+/* alternative layout for wide screens */
+@media screen and (min-width: 1024px) {
+  body {
+    max-width: 724px;
+    margin: 42px auto;
+    padding-left: 1.5em;
+    padding-right: 29em;
+  }
+  #toc {
+    position: fixed;
+    top: 42px;
+    right: 42px;
+    width: 25%;
+    margin: 0;
+    padding: 0 1em;
+    z-index: 1;
+  }
+  #toc h2 {
+    border-top: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0.25em 1em 1em 0;
+  }
+  #toc nav {
+    display: block;
+    height: calc(90vh - 84px);
+    bottom: 0;
+    padding: 0.5em 0 0;
+    overflow: auto;
+  }
+  img { /* future proofing */
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* pagination */
+@media print {
+  body {
+    width: 100%;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  #n-copyright-notice {
+    border-bottom: none;
+  }
+  #toc, #n-introduction {
+    page-break-before: always;
+  }
+  #toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  figure, pre {
+    page-break-inside: avoid;
+  }
+  figure {
+    overflow: scroll;
+  }
+  .breakable pre {
+    break-inside: auto;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  h2+*, h3+*, h4+*, h5+*, h6+* {
+    page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+  table {
+    border: 1px solid #ddd;
+  }
+  td {
+    border-top: 1px solid #ddd;
+  }
+}
+
+/* This is commented out here, as the string-set: doesn't
+   pass W3C validation currently */
+/*
+.ears thead .left {
+  string-set: ears-top-left content();
+}
+
+.ears thead .center {
+  string-set: ears-top-center content();
+}
+
+.ears thead .right {
+  string-set: ears-top-right content();
+}
+
+.ears tfoot .left {
+  string-set: ears-bottom-left content();
+}
+
+.ears tfoot .center {
+  string-set: ears-bottom-center content();
+}
+
+.ears tfoot .right {
+  string-set: ears-bottom-right content();
+}
+*/
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+  /* The following is commented out here, but set appropriately by in code, as
+     the content depends on the document */
+  /*
+  @top-left {
+    content: 'Internet-Draft';
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-left {
+    content: string(ears-top-left);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-center {
+    content: string(ears-top-center);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-right {
+    content: string(ears-top-right);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @bottom-left {
+    content: string(ears-bottom-left);
+    vertical-align: top;
+    border-top: solid 1px #ccc;
+  }
+  @bottom-center {
+    content: string(ears-bottom-center);
+    vertical-align: top;
+    border-top: solid 1px #ccc;
+  }
+  @bottom-right {
+      content: '[Page ' counter(page) ']';
+      vertical-align: top;
+      border-top: solid 1px #ccc;
+  }
+  */
+
+}
+
+/* Changes introduced to fix issues found during implementation */
+/* Make sure links are clickable even if overlapped by following H* */
+a {
+  z-index: 2;
+}
+/* Separate body from document info even without intervening H1 */
+section {
+  clear: both;
+}
+
+
+/* Top align author divs, to avoid names without organization dropping level with org names */
+.author {
+  vertical-align: top;
+}
+
+/* Leave room in document info to show Internet-Draft on one line */
+#identifiers dt {
+  width: 8em;
+}
+
+/* Don't waste quite as much whitespace between label and value in doc info */
+#identifiers dd {
+  margin-left: 1em;
+}
+
+/* Give floating toc a background color (needed when it's a div inside section */
+#toc {
+  background-color: white;
+}
+
+/* Make the collapsed ToC header render white on gray also when it's a link */
+@media screen and (max-width: 1023px) {
+  #toc h2 a,
+  #toc h2 a:link,
+  #toc h2 a:focus,
+  #toc h2 a:hover,
+  #toc a.toplink,
+  #toc a.toplink:hover {
+    color: white;
+    background-color: #444;
+    text-decoration: none;
+  }
+}
+
+/* Give the bottom of the ToC some whitespace */
+@media screen and (min-width: 1024px) {
+  #toc {
+    padding: 0 0 1em 1em;
+  }
+}
+
+/* Style section numbers with more space between number and title */
+.section-number {
+  padding-right: 0.5em;
+}
+
+/* prevent monospace from becoming overly large */
+tt, code, pre {
+  font-size: 95%;
+}
+
+/* Fix the height/width aspect for ascii art*/
+.sourcecode pre,
+.art-text pre {
+  line-height: 1.12;
+}
+
+
+/* Add styling for a link in the ToC that points to the top of the document */
+a.toplink {
+  float: right;
+  margin-right: 0.5em;
+}
+
+/* Fix the dl styling to match the RFC 7992 attributes */
+dl > dt,
+dl.dlParallel > dt {
+  float: left;
+  margin-right: 1em;
+}
+dl.dlNewline > dt {
+  float: none;
+}
+
+/* Provide styling for table cell text alignment */
+table td.text-left,
+table th.text-left {
+  text-align: left;
+}
+table td.text-center,
+table th.text-center {
+  text-align: center;
+}
+table td.text-right,
+table th.text-right {
+  text-align: right;
+}
+
+/* Make the alternative author contact information look less like just another
+   author, and group it closer with the primary author contact information */
+.alternative-contact {
+  margin: 0.5em 0 0.25em 0;
+}
+address .non-ascii {
+  margin: 0 0 0 2em;
+}
+
+/* With it being possible to set tables with alignment
+  left, center, and right, { width: 100%; } does not make sense */
+table {
+  width: auto;
+}
+
+/* Avoid reference text that sits in a block with very wide left margin,
+   because of a long floating dt label.*/
+.references dd {
+  overflow: visible;
+}
+
+/* Control caption placement */
+caption {
+  caption-side: bottom;
+}
+
+/* Limit the width of the author address vcard, so names in right-to-left
+   script don't end up on the other side of the page. */
+
+address.vcard {
+  max-width: 30em;
+  margin-right: auto;
+}
+
+/* For address alignment dependent on LTR or RTL scripts */
+address div.left {
+  text-align: left;
+}
+address div.right {
+  text-align: right;
+}
+
+/* Provide table alignment support.  We can't use the alignX classes above
+   since they do unwanted things with caption and other styling. */
+table.right {
+ margin-left: auto;
+ margin-right: 0;
+}
+table.center {
+ margin-left: auto;
+ margin-right: auto;
+}
+table.left {
+ margin-left: 0;
+ margin-right: auto;
+}
+
+/* Give the table caption label the same styling as the figcaption */
+caption a[href] {
+  color: #222;
+}
+
+@media print {
+  .toplink {
+    display: none;
+  }
+
+  /* avoid overwriting the top border line with the ToC header */
+  #toc {
+    padding-top: 1px;
+  }
+
+  /* Avoid page breaks inside dl and author address entries */
+  .vcard {
+    page-break-inside: avoid;
+  }
+
+}
+/* Tweak the bcp14 keyword presentation */
+.bcp14 {
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+/* Tweak the invisible space above H* in order not to overlay links in text above */
+ h2 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 31px;
+ }
+ h3 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 24px;
+ }
+ h4 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 24px;
+ }
+/* Float artwork pilcrow to the right */
+@media screen {
+  .artwork a.pilcrow {
+    display: block;
+    line-height: 0.7;
+    margin-top: 0.15em;
+  }
+}
+/* Make pilcrows on dd visible */
+@media screen {
+  dd:hover > a.pilcrow {
+    visibility: visible;
+  }
+}
+/* Make the placement of figcaption match that of a table's caption
+   by removing the figure's added bottom margin */
+.alignLeft.art-text,
+.alignCenter.art-text,
+.alignRight.art-text {
+   margin-bottom: 0;
+}
+.alignLeft,
+.alignCenter,
+.alignRight {
+  margin: 1em 0 0 0;
+}
+/* In print, the pilcrow won't show on hover, so prevent it from taking up space,
+   possibly even requiring a new line */
+@media print {
+  a.pilcrow {
+    display: none;
+  }
+}
+/* Styling for the external metadata */
+div#external-metadata {
+  background-color: #eee;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  display: none;
+}
+div#internal-metadata {
+  padding: 0.5em;                       /* to match the external-metadata padding */
+}
+/* Styling for title RFC Number */
+h1#rfcnum {
+  clear: both;
+  margin: 0 0 -1em;
+  padding: 1em 0 0 0;
+}
+/* Make .olPercent look the same as <ol><li> */
+dl.olPercent > dd {
+  margin-bottom: 0.25em;
+  min-height: initial;
+}
+/* Give aside some styling to set it apart */
+aside {
+  border-left: 1px solid #ddd;
+  margin: 1em 0 1em 2em;
+  padding: 0.2em 2em;
+}
+aside > dl,
+aside > ol,
+aside > ul,
+aside > table,
+aside > p {
+  margin-bottom: 0.5em;
+}
+/* Additional page break settings */
+@media print {
+  figcaption, table caption {
+    page-break-before: avoid;
+  }
+}
+/* Font size adjustments for print */
+@media print {
+  body  { font-size: 10pt;      line-height: normal; max-width: 96%; }
+  h1    { font-size: 1.72em;    padding-top: 1.5em; } /* 1*1.2*1.2*1.2 */
+  h2    { font-size: 1.44em;    padding-top: 1.5em; } /* 1*1.2*1.2 */
+  h3    { font-size: 1.2em;     padding-top: 1.5em; } /* 1*1.2 */
+  h4    { font-size: 1em;       padding-top: 1.5em; }
+  h5, h6 { font-size: 1em;      margin: initial; padding: 0.5em 0 0.3em; }
+}
+/* Sourcecode margin in print, when there's no pilcrow */
+@media print {
+  .artwork,
+  .artwork > pre,
+  .sourcecode {
+    margin-bottom: 1em;
+  }
+}
+/* Avoid narrow tables forcing too narrow table captions, which may render badly */
+table {
+  min-width: 20em;
+}
+/* ol type a */
+ol.type-a { list-style-type: lower-alpha; }
+ol.type-A { list-style-type: upper-alpha; }
+ol.type-i { list-style-type: lower-roman; }
+ol.type-I { list-style-type: upper-roman; }
+/* Apply the print table and row borders in general, on request from the RPC,
+and increase the contrast between border and odd row background slightly */
+table {
+  border: 1px solid #ddd;
+}
+td {
+  border-top: 1px solid #ddd;
+}
+tr {
+  break-inside: avoid;
+}
+tr:nth-child(2n+1) > td {
+  background-color: #f8f8f8;
+}
+/* Use style rules to govern display of the TOC. */
+@media screen and (max-width: 1023px) {
+  #toc nav { display: none; }
+  #toc.active nav { display: block; }
+}
+/* Add support for keepWithNext */
+.keepWithNext {
+  break-after: avoid-page;
+  break-after: avoid-page;
+}
+/* Add support for keepWithPrevious */
+.keepWithPrevious {
+  break-before: avoid-page;
+}
+/* Change the approach to avoiding breaks inside artwork etc. */
+figure, pre, table, .artwork, .sourcecode  {
+  break-before: auto;
+  break-after: auto;
+}
+/* Avoid breaks between <dt> and <dd> */
+dl {
+  break-before: auto;
+  break-inside: auto;
+}
+dt {
+  break-before: auto;
+  break-after: avoid-page;
+}
+dd {
+  break-before: avoid-page;
+  break-after: auto;
+  orphans: 3;
+  widows: 3
+}
+span.break, dd.break {
+  margin-bottom: 0;
+  min-height: 0;
+  break-before: auto;
+  break-inside: auto;
+  break-after: auto;
+}
+/* Undo break-before ToC */
+@media print {
+  #toc {
+    break-before: auto;
+  }
+}
+/* Text in compact lists should not get extra bottom margin space,
+   since that would makes the list not compact */
+ul.compact p, .ulCompact p,
+ol.compact p, .olCompact p {
+ margin: 0;
+}
+/* But the list as a whole needs the extra space at the end */
+section ul.compact,
+section .ulCompact,
+section ol.compact,
+section .olCompact {
+  margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+}
+/* The tt and code background above interferes with for instance table cell
+   backgrounds.  Changed to something a bit more selective. */
+tt, code {
+  background-color: transparent;
+}
+p tt, p code, li tt, li code, dt tt, dt code {
+  background-color: #f8f8f8;
+}
+/* Tweak the pre margin -- 0px doesn't come out well */
+pre {
+   margin-top: 0.5px;
+}
+/* Tweak the compact list text */
+ul.compact, .ulCompact,
+ol.compact, .olCompact,
+dl.compact, .dlCompact {
+  line-height: normal;
+}
+/* Don't add top margin for nested lists */
+li > ul, li > ol, li > dl,
+dd > ul, dd > ol, dd > dl,
+dl > dd > dl {
+  margin-top: initial;
+}
+/* Elements that should not be rendered on the same line as a <dt> */
+/* This should match the element list in writer.text.TextWriter.render_dl() */
+dd > div.artwork:first-child,
+dd > aside:first-child,
+dd > blockquote:first-child,
+dd > figure:first-child,
+dd > ol:first-child,
+dd > div.sourcecode:first-child,
+dd > table:first-child,
+dd > ul:first-child {
+  clear: left;
+}
+/* fix for weird browser behaviour when <dd/> is empty */
+dt+dd:empty::before{
+  content: "\00a0";
+}
+/* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+li > p {
+  margin-bottom: 0.5em
+}
+/* Don't let p margin spill out from inside list items */
+li > p:last-of-type:only-child {
+  margin-bottom: 0;
+}
+</style>
+<link href="rfc-local.css" rel="stylesheet" type="text/css">
+<script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+</head>
+<body class="xml2rfc">
+<script src="metadata.min.js"></script>
+<table class="ears">
+<thead><tr>
+<td class="left">Internet-Draft</td>
+<td class="center">Core Email A/S</td>
+<td class="right">August 2025</td>
+</tr></thead>
+<tfoot><tr>
+<td class="left">Klensin &amp; Murchison</td>
+<td class="center">Expires 6 February 2026</td>
+<td class="right">[Page]</td>
+</tr></tfoot>
+</table>
+<div id="external-metadata" class="document-information"></div>
+<div id="internal-metadata" class="document-information">
+<dl id="identifiers">
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">EMAILCORE</dd>
+<dt class="label-internet-draft">Internet-Draft:</dt>
+<dd class="internet-draft">draft-ietf-emailcore-as-19</dd>
+<dt class="label-published">Published:</dt>
+<dd class="published">
+<time datetime="2025-08-05" class="published">5 August 2025</time>
+    </dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Standards Track</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2026-02-06">6 February 2026</time></dd>
+<dt class="label-authors">Authors:</dt>
+<dd class="authors">
+<div class="author">
+      <div class="author-name">J.C. Klensin, <span class="editor">Ed.</span>
+</div>
+</div>
+<div class="author">
+      <div class="author-name">K. Murchison, <span class="editor">Ed.</span>
+</div>
+<div class="org">Fastmail</div>
+</div>
+</dd>
+</dl>
+</div>
+<h1 id="title">Applicability Statement for IETF Core Email Protocols</h1>
+<section id="section-abstract">
+      <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
+<p id="section-abstract-1"> Electronic mail is one of the oldest Internet
+      applications that is still in very active use.  While the
+      basic protocols and formats for mail transport and message
+      formats have evolved slowly over the years, events and
+      thinking in more recent years have supplemented those core
+      protocols with additional features and suggestions for their
+      use.
+      This Applicability Statement describes the relationship
+      among many of those protocols and provides guidance and
+      makes recommendations for the use of features of the core
+      protocols.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+</section>
+<div id="status-of-memo">
+<section id="section-boilerplate.1">
+        <h2 id="name-status-of-this-memo">
+<a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
+        </h2>
+<p id="section-boilerplate.1-1">
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-2">
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-3">
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 6 February 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="copyright">
+<section id="section-boilerplate.2">
+        <h2 id="name-copyright-notice">
+<a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
+        </h2>
+<p id="section-boilerplate.2-1">
+            Copyright (c) 2025 IETF Trust and the persons identified as the
+            document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document. Code Components extracted from this
+            document must include Revised BSD License text as described in
+            Section 4.e of the Trust Legal Provisions and are provided without
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="toc">
+<section id="section-toc.1">
+        <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
+<a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
+        </h2>
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-conventions-used-in-this-do" class="internal xref">Conventions Used in This Document</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-applicability-of-some-smtp-" class="internal xref">Applicability of Some SMTP Provisions</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-handling-of-the-domain-argu" class="internal xref">Handling of the Domain Argument to the EHLO Command</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-use-of-address-literals" class="internal xref">Use of Address Literals</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
+                <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-use-of-addresses-in-top-lev" class="internal xref">Use of Addresses in Top-Level Domains</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
+                <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="auto internal xref">2.4</a>.  <a href="#name-use-of-smtp-extensions" class="internal xref">Use of SMTP Extensions</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-applicability-of-message-fo" class="internal xref">Applicability of Message Format Provisions</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-use-of-empty-quoted-strings" class="internal xref">Use of Empty Quoted Strings</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-use-of-received-header-fiel" class="internal xref">Use of Received Header Fields</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.1">
+                    <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-generation" class="internal xref">Generation</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.2">
+                    <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-consumption" class="internal xref">Consumption</a></p>
+</li>
+                </ul>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-reuse-of-existing-messages" class="internal xref">Reuse of Existing Messages</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-use-of-email-addresses" class="internal xref">Use of Email Addresses</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-case-sensitivity-delimiters" class="internal xref">Case-Sensitivity, Delimiters, and Mailbox Equivalency</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-use-of-non-ascii-characters" class="internal xref">Use of non-ASCII Characters</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-use-and-validation-in-html-" class="internal xref">Use and Validation in HTML and Other Contexts</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-use-of-multipurpose-interne" class="internal xref">Use of Multipurpose Internet Mail Extensions (MIME)</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-confidentiality-and-authent" class="internal xref">Confidentiality and Authentication with SMTP</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-transport-layer-security" class="internal xref">Transport Layer Security</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-opportunistic-confidentiali" class="internal xref">Opportunistic Confidentiality</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+                <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-enforced-confidentiality-wi" class="internal xref">Enforced Confidentiality,
+        with Receiving Server Authentication</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+                <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-message-level-authenticatio" class="internal xref">Message-Level Authentication</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
+                <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-smtp-authentication" class="internal xref">SMTP Authentication</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6">
+                <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="auto internal xref">6.6</a>.  <a href="#name-message-level-confidentiali" class="internal xref">Message-Level Confidentiality</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.7">
+                <p id="section-toc.1-1.6.2.7.1"><a href="#section-6.7" class="auto internal xref">6.7</a>.  <a href="#name-confidentiality-limitations" class="internal xref">Confidentiality Limitations</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.8">
+                <p id="section-toc.1-1.6.2.8.1"><a href="#section-6.8" class="auto internal xref">6.8</a>.  <a href="#name-confidentiality-requirement" class="internal xref">Confidentiality Requirements</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+                <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+                <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-change-log" class="internal xref">Change Log</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+                <p id="section-toc.1-1.11.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-changes-from-draft-klensin-" class="internal xref">Changes from draft-klensin-email-core-as-00 (2020-03-30)
+        to draft-ietf-emailcore-as-00</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+                <p id="section-toc.1-1.11.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-changes-from-draft-ietf-ema" class="internal xref">Changes from draft-ietf-emailcore-as-00 (2020-10-06) to -01</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3">
+                <p id="section-toc.1-1.11.2.3.1"><a href="#appendix-A.3" class="auto internal xref">A.3</a>.  <a href="#name-changes-from-draft-ietf-emai" class="internal xref">Changes from draft-ietf-emailcore-as-01 (2021-04-09) to -02</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.4">
+                <p id="section-toc.1-1.11.2.4.1"><a href="#appendix-A.4" class="auto internal xref">A.4</a>.  <a href="#name-changes-from-draft-ietf-email" class="internal xref">Changes from draft-ietf-emailcore-as-02 (2021-08-06) to -03</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.5">
+                <p id="section-toc.1-1.11.2.5.1"><a href="#appendix-A.5" class="auto internal xref">A.5</a>.  <a href="#name-changes-from-draft-ietf-emailc" class="internal xref">Changes from draft-ietf-emailcore-as-03 (2022-01-31) to -04</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.6">
+                <p id="section-toc.1-1.11.2.6.1"><a href="#appendix-A.6" class="auto internal xref">A.6</a>.  <a href="#name-changes-from-draft-ietf-emailco" class="internal xref">Changes from draft-ietf-emailcore-as-04 (2022-05-21) to -05</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.7">
+                <p id="section-toc.1-1.11.2.7.1"><a href="#appendix-A.7" class="auto internal xref">A.7</a>.  <a href="#name-changes-from-draft-ietf-emailcor" class="internal xref">Changes from draft-ietf-emailcore-as-05 (2022-10-24) to -06</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.8">
+                <p id="section-toc.1-1.11.2.8.1"><a href="#appendix-A.8" class="auto internal xref">A.8</a>.  <a href="#name-changes-from-draft-ietf-emailcore" class="internal xref">Changes from draft-ietf-emailcore-as-06 (2022-11-07) to -07</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.9">
+                <p id="section-toc.1-1.11.2.9.1"><a href="#appendix-A.9" class="auto internal xref">A.9</a>.  <a href="#name-changes-from-draft-ietf-emailcore-" class="internal xref">Changes from draft-ietf-emailcore-as-07 (2023-03-13) to -08</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.10">
+                <p id="section-toc.1-1.11.2.10.1"><a href="#appendix-A.10" class="auto internal xref">A.10</a>. <a href="#name-changes-from-draft-ietf-emailcore-a" class="internal xref">Changes from draft-ietf-emailcore-as-08 (2023-12-18) to -09</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.11">
+                <p id="section-toc.1-1.11.2.11.1"><a href="#appendix-A.11" class="auto internal xref">A.11</a>. <a href="#name-changes-from-draft-ietf-emailcore-a-2" class="internal xref">Changes from draft-ietf-emailcore-as-09 (2024-07-02) to -10</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.12">
+                <p id="section-toc.1-1.11.2.12.1"><a href="#appendix-A.12" class="auto internal xref">A.12</a>. <a href="#name-changes-from-draft-ietf-emailcore-a-3" class="internal xref">Changes from draft-ietf-emailcore-as-10 (2024-07-03) to -11</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.13">
+                <p id="section-toc.1-1.11.2.13.1"><a href="#appendix-A.13" class="auto internal xref">A.13</a>. <a href="#name-changes-from-draft-ietf-emailcore-a-4" class="internal xref">Changes from draft-ietf-emailcore-as-11 (2024-10-21) to -12</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.14">
+                <p id="section-toc.1-1.11.2.14.1"><a href="#appendix-A.14" class="auto internal xref">A.14</a>. <a href="#name-changes-from-draft-ietf-emailcore-a-5" class="internal xref">Changes from draft-ietf-emailcore-as-12 (2024-11-09) to -13</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.15">
+                <p id="section-toc.1-1.11.2.15.1"><a href="#appendix-A.15" class="auto internal xref">A.15</a>. <a href="#name-changes-from-draft-ietf-emailcore-a-6" class="internal xref">Changes from draft-ietf-emailcore-as-13 (2025-01-30) to -14</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.16">
+                <p id="section-toc.1-1.11.2.16.1"><a href="#appendix-A.16" class="auto internal xref">A.16</a>. <a href="#name-changes-from-draft-ietf-emailcore-a-7" class="internal xref">Changes from draft-ietf-emailcore-as-14 (2025-02-27) to -15</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.17">
+                <p id="section-toc.1-1.11.2.17.1"><a href="#appendix-A.17" class="auto internal xref">A.17</a>. <a href="#name-changes-from-draft-ietf-emailcore-a-8" class="internal xref">Changes from draft-ietf-emailcore-as-15 (2025-03-18) to -16</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.18">
+                <p id="section-toc.1-1.11.2.18.1"><a href="#appendix-A.18" class="auto internal xref">A.18</a>. <a href="#name-changes-from-draft-ietf-emailcore-a-9" class="internal xref">Changes from draft-ietf-emailcore-as-16 to -17</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.19">
+                <p id="section-toc.1-1.11.2.19.1"><a href="#appendix-A.19" class="auto internal xref">A.19</a>. <a href="#name-changes-from-draft-ietf-emailcore-a-10" class="internal xref">Changes from draft-ietf-emailcore-as-17 to -18</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.20">
+                <p id="section-toc.1-1.11.2.20.1"><a href="#appendix-A.20" class="auto internal xref">A.20</a>. <a href="#name-changes-from-draft-ietf-emailcore-a-11" class="internal xref">Changes from draft-ietf-emailcore-as-18 to -19</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+</li>
+        </ul>
+</nav>
+</section>
+</div>
+<section id="section-1">
+      <h2 id="name-introduction">
+<a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
+      </h2>
+<p id="section-1-1">This document is an
+      <span>Applicability Statement [<a href="#RFC2026" class="cite xref">RFC2026</a>], <a href="https://rfc-editor.org/rfc/rfc2026#section-3.2" class="relref">Section 3.2</a></span> that provides guidance in the
+        use of the Internet's core email specifications, the
+      <span><a href="#I-D.ietf-emailcore-rfc5321bis" class="internal xref">Simple Mail
+      Transfer Protocol (SMTP)</a> [<a href="#I-D.ietf-emailcore-rfc5321bis" class="cite xref">I-D.ietf-emailcore-rfc5321bis</a>]</span> and the
+      <span><a href="#I-D.ietf-emailcore-rfc5322bis" class="internal xref">Internet Message
+  Format (IMF)</a> [<a href="#I-D.ietf-emailcore-rfc5322bis" class="cite xref">I-D.ietf-emailcore-rfc5322bis</a>]</span>,
+   
+   and some extensions and other protocols that have been built on
+      them.
+      In order to promote interoperability amongst senders, receivers,
+      and intermediaries, it includes discussions and recommendations
+      about selected features of SMTP, IMF, and certain extensions to
+      them that are required, recommended, or to be avoided except in
+      special cases.
+      Furthermore, this document discusses some common mechanisms for
+      confidentiality and authentication in electronic mail.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<section id="section-1.1">
+        <h3 id="name-conventions-used-in-this-do">
+<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-conventions-used-in-this-do" class="section-name selfRef">Conventions Used in This Document</a>
+        </h3>
+<p id="section-1.1-1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+        NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+        "MAY", and "OPTIONAL" in this document are to be interpreted as
+        described in BCP 14
+        <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span>
+          <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span>
+        when, and only when, they appear in all capitals, as shown
+        here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+</section>
+</section>
+<section id="section-2">
+      <h2 id="name-applicability-of-some-smtp-">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-applicability-of-some-smtp-" class="section-name selfRef">Applicability of Some SMTP Provisions</a>
+      </h2>
+<p id="section-2-1"> Over the years since <span>[<a href="#RFC5321" class="cite xref">RFC5321</a>]</span> was
+        published in October 2008, usage of SMTP has evolved,
+ machines and
+   
+        network speeds have increased, and the frequency with which most
+        SMTP senders and receivers have to be prepared to deal with
+        systems that are disconnected from the Internet for long
+        periods or that require many hops to reach has decreased.
+        During the same period, the IETF
+
+        
+
+        has become much more sensitive to privacy and security
+        issues and the need to be more resistant or robust against
+        spam and other attacks.  In addition SMTP (and Message
+        Format) extensions have been introduced that are expected to
+        evolve the Internet's mail system to better accommodate
+        environments in which Basic Latin Script is not the norm.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2"> This section describes
+   
+  describes configuration options and other considerations
+  about SMTP that may be appropriate under various circumstances
+      and discusses the applicability of other protocols that
+      represent newer work or that are intended to deal with
+      relatively newer issues.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<section id="section-2.1">
+        <h3 id="name-handling-of-the-domain-argu">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-handling-of-the-domain-argu" class="section-name selfRef">Handling of the Domain Argument to the EHLO Command</a>
+        </h3>
+<p id="section-2.1-1"> If the <code>Domain</code> argument to
+          the EHLO command does not have an address record in the
+          DNS that matches the IP address of the client, the SMTP
+          server may refuse any mail from the client as part of
+          established anti-abuse practice.
+          Operational experience has demonstrated that the lack of
+          a matching address record for the the domain name
+          argument is at best an indication of a poorly-configured
+          MTA, and at worst that of an abusive host.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+</section>
+<section id="section-2.2">
+        <h3 id="name-use-of-address-literals">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-use-of-address-literals" class="section-name selfRef">Use of Address Literals</a>
+        </h3>
+<p id="section-2.2-1"> The <code>address-literal</code> ABNF
+          non-terminal is used in various places in
+          <span>[<a href="#I-D.ietf-emailcore-rfc5321bis" class="cite xref">I-D.ietf-emailcore-rfc5321bis</a>]</span> grammar
+          however, for SMTP connections over the public internet,
+          an <code>address-literal</code>
+          as the argument to EHLO command or the
+          <code>Domain</code> part of the
+          <code>Mailbox</code> argument to the MAIL
+          FROM command is quite likely to result in the message
+          being rejected as a matter of policy at many sites, since
+          they are deemed to be signs of at best a misconfigured
+          server, and at worst either a compromised host or a
+          server that's intentionally configured to hide its
+          identity.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+</section>
+<section id="section-2.3">
+        <h3 id="name-use-of-addresses-in-top-lev">
+<a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-use-of-addresses-in-top-lev" class="section-name selfRef">Use of Addresses in Top-Level Domains</a>
+        </h3>
+<p id="section-2.3-1"> While addresses in top-level domains (TLDs)
+    
+     (i.e., single-label domains) are
+          syntactically valid, mail to these addresses has never
+          worked reliably.
+          A handful of country code TLDs have top level MX records but
+          they have never been widely used nor
+          well supported. In 2013 <span>[<a href="#RFC7085" class="cite xref">RFC7085</a>]</span> found 18
+          TLDs with MX records, which dropped to 17 in 2021 despite
+          many new TLDs having been added.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+<p id="section-2.3-2"> Mail sent to addresses with single label domains has
+          typically expected the address to be an abbreviation to be
+          completed by a search list, so mail to bob@sales would be
+          completed to bob@sales.example.com.
+          This shortcut has led to unfortunate consequnces; in one
+          famous case, in 1991 when the .CS domain was added to the
+          root, mail in computer science departments started to fail
+          as mail to bob@cs was now treated as mail to
+          Czechoslovakia.
+   
+   Hence, for reliable service, mail SHOULD NOT use addresses
+          that contain single label domains.<a href="#section-2.3-2" class="pilcrow">¶</a></p>
+</section>
+<div id="smtp-ext">
+<section id="section-2.4">
+        <h3 id="name-use-of-smtp-extensions">
+<a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-use-of-smtp-extensions" class="section-name selfRef">Use of SMTP Extensions</a>
+        </h3>
+<p id="section-2.4-1">As SMTP has evolved over the years, several extensions
+        have become ubiquitous.
+        As a result, the following extensions MUST be supported by SMTP
+        senders and receivers:<a href="#section-2.4-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2.4-2.1">
+            <span><a href="#RFC3207" class="internal xref">Secure SMTP over Transport Layer
+    Security</a> [<a href="#RFC3207" class="cite xref">RFC3207</a>]</span>
+            
+   (Cf. discussion in <a href="#tls" class="auto internal xref">Section 6.1</a>.)<a href="#section-2.4-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-2.4-2.2">
+            <span><a href="#RFC6152" class="internal xref">8-bit MIME</a> [<a href="#RFC6152" class="cite xref">RFC6152</a>]</span><a href="#section-2.4-2.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-2.4-3">Similarly, the following extensions SHOULD be supported by SMTP
+          senders and receivers:<a href="#section-2.4-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2.4-4.1">
+            <span><a href="#RFC2920" class="internal xref">Command Pipelining</a> [<a href="#RFC2920" class="cite xref">RFC2920</a>]</span><a href="#section-2.4-4.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-2.4-4.2">
+            Internationalized Email (<span>[<a href="#RFC6530" class="cite xref">RFC6530</a>]</span>,
+            <span>[<a href="#RFC6531" class="cite xref">RFC6531</a>]</span>, <span>[<a href="#RFC6532" class="cite xref">RFC6532</a>]</span>)<a href="#section-2.4-4.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-2.4-5"><span><a href="#RFC3461" class="internal xref">Delivery Status Notifications</a> [<a href="#RFC3461" class="cite xref">RFC3461</a>]</span>
+        requests, while recommended and useful if supported, have not
+        been widely implemented and deployed.
+        Mail systems that send such requests should be prepared for
+        systems that receive them to not recognize or support them.
+        Note that this extension for notification requests is distinct
+        from the format of notifications defined in
+        <span>[<a href="#RFC3464" class="cite xref">RFC3464</a>]</span> and <span>[<a href="#RFC6533" class="cite xref">RFC6533</a>]</span>
+        and, the special media type defined in <span>[<a href="#RFC6522" class="cite xref">RFC6522</a>]</span>.
+        All of those SHOULD be supported.<a href="#section-2.4-5" class="pilcrow">¶</a></p>
+<p id="section-2.4-6">Furthermore, while Enhanced Mail System Status Codes
+          (<span>[<a href="#RFC3463" class="cite xref">RFC3463</a>]</span>, <span>[<a href="#RFC5248" class="cite xref">RFC5248</a>]</span>)
+          are widely supported, they are not ubiquitous.
+          Nevertheless, they have been found to be useful to SMTP
+          senders in determining the exact reason for a transmission
+          failure in a machine-readable, language-independent manner,
+          thus allowing them to present more detailed and
+          language-specific error messages to users.
+
+          Given the usefulness of these enhanced codes, SMTP receivers
+          are RECOMMENDED to implement the <span><a href="#RFC2034" class="internal xref">SMTP
+          Service Extension for Returning Enhanced Error Codes</a> [<a href="#RFC2034" class="cite xref">RFC2034</a>]</span>
+          utilizing the codes registered in <span>[<a href="#RFC5248" class="cite xref">RFC5248</a>]</span>.<a href="#section-2.4-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+<section id="section-3">
+      <h2 id="name-applicability-of-message-fo">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-applicability-of-message-fo" class="section-name selfRef">Applicability of Message Format Provisions</a>
+      </h2>
+<p id="section-3-1"> This section describes considerations about the Internet Message
+        Format that may be appropriate under various circumstances.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<div id="empty-quoted">
+<section id="section-3.1">
+        <h3 id="name-use-of-empty-quoted-strings">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-use-of-empty-quoted-strings" class="section-name selfRef">Use of Empty Quoted Strings</a>
+        </h3>
+<p id="section-3.1-1">
+            The <code>quoted-string</code> ABNF
+            non-terminal is used in various places in
+            <span>[<a href="#I-D.ietf-emailcore-rfc5322bis" class="cite xref">I-D.ietf-emailcore-rfc5322bis</a>]</span>
+            grammar.
+            While it allows for empty quoted string, such construct is
+            going to cause interoperability issues when used in certain
+            header fields.
+            In particular, use of empty quoted  strings is discouraged
+            in "received-token" (a component of a Received
+            header field) and "local-part" (left hand side of email addresses).
+            For example, all of the following email header fields are
+            non-interoperable:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3.1-2.1">Received: from node.example by x.y.test "" foo; 21 Nov 1997 10:01:22 -0600<a href="#section-3.1-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-3.1-2.2">From: "".bar@example.com<a href="#section-3.1-2.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-3.1-2.3">To: foo.""@example.net<a href="#section-3.1-2.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-3.1-2.4">Cc: ""@example.com<a href="#section-3.1-2.4" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-3.1-3">Use of empty quoted strings is fine in "display-name".
+        For example, the following email header field is interoperable:<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3.1-4.1">To: "" &lt;test@example.com&gt;<a href="#section-3.1-4.1" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+</div>
+<section id="section-3.2">
+        <h3 id="name-use-of-received-header-fiel">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-use-of-received-header-fiel" class="section-name selfRef">Use of Received Header Fields</a>
+        </h3>
+<section id="section-3.2.1">
+          <h4 id="name-generation">
+<a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-generation" class="section-name selfRef">Generation</a>
+          </h4>
+<p id="section-3.2.1-1">Email addresses are commonly classified as Personally
+          Identifiable Information (PII). Improper application of the
+          FOR clause in Received header fields can result in disclosure
+          of PII.  As such, the FOR clause SHOULD NOT be generated if the
+          message copy is associated with multiple recipients from
+          multiple SMTP RCPT commands.
+          Otherwise, the value of the FOR clause MUST contain the RCPT
+          address that caused the message to be routed to the
+          recipient of the given copy of the message.<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-2">Note however, that if a mail system generates a FOR clause
+          when there is only a single recipient, and doesn't generate
+          one when there are multiple recipients, the absence of the
+          field is an indication that there is another recipient, which
+          may allow someone to infer that a "blind" copy is
+          involved.<a href="#section-3.2.1-2" class="pilcrow">¶</a></p>
+</section>
+<div id="received-consumption">
+<section id="section-3.2.2">
+          <h4 id="name-consumption">
+<a href="#section-3.2.2" class="section-number selfRef">3.2.2. </a><a href="#name-consumption" class="section-name selfRef">Consumption</a>
+          </h4>
+<p id="section-3.2.2-1">Received header fields support analysis of handling and
+          delivery problems, as well as aiding evaluation of a message
+          with suspicious content or attributes. The fields are easily
+          created and have no direct security or privacy protections,
+          and the fields can contain personally sensitive
+          information.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.2-2">Therefore, the fields do not warrant automatic trust and
+          do warrant careful consideration before disclosing to
+          others. They should be used with care, for whatever
+          information is deemed valuable, and especially when syntax
+          or values occur that are not defined by the specifications
+          <span>[<a href="#I-D.ietf-emailcore-rfc5321bis" class="cite xref">I-D.ietf-emailcore-rfc5321bis</a>]</span>
+            <span>[<a href="#I-D.ietf-emailcore-rfc5322bis" class="cite xref">I-D.ietf-emailcore-rfc5322bis</a>]</span>.<a href="#section-3.2.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+<div id="trace">
+<section id="section-3.3">
+        <h3 id="name-reuse-of-existing-messages">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-reuse-of-existing-messages" class="section-name selfRef">Reuse of Existing Messages</a>
+        </h3>
+<p id="section-3.3-1">Many mail user agents (MUAs) have functions which use an
+        existing email message as a template for editing a new
+ message.
+ 
+ These functions are different from traditional forwarding
+ functions.  Those generally preserve the original message as a
+ body part or just the message body as quoted text.
+ For example, an MUA may take an existing message,
+        allow the user to replace the originator and destinations,
+        edit parts of the body, and send it on to the new
+        recipients. When performing such functions, the MUA SHOULD:<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3.3-2.1">Remove all header fields unknown to the MUA<a href="#section-3.3-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-3.3-2.2">Remove any header fields that are only pertinent to the
+          transport of the original message, such as trace header
+          fields
+          (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-emailcore-rfc5322bis-12#section-3.6.7" class="relref">Section 3.6.7</a> of [<a href="#I-D.ietf-emailcore-rfc5322bis" class="cite xref">I-D.ietf-emailcore-rfc5322bis</a>]</span>)<a href="#section-3.3-2.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+</div>
+</section>
+<section id="section-4">
+      <h2 id="name-use-of-email-addresses">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-use-of-email-addresses" class="section-name selfRef">Use of Email Addresses</a>
+      </h2>
+<section id="section-4.1">
+        <h3 id="name-case-sensitivity-delimiters">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-case-sensitivity-delimiters" class="section-name selfRef">Case-Sensitivity, Delimiters, and Mailbox Equivalency</a>
+        </h3>
+<p id="section-4.1-1">SMTP specifies that the local-part of an email address is
+      case-sensitive (see
+      <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-emailcore-rfc5321bis-44#section-2.4" class="relref">Section 2.4</a> of [<a href="#I-D.ietf-emailcore-rfc5321bis" class="cite xref">I-D.ietf-emailcore-rfc5321bis</a>]</span>):<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<div class="sourcecode" id="section-4.1-2">
+<pre>
+        The local-part of a mailbox MUST BE treated as case
+        sensitive.  Therefore, SMTP implementations MUST take
+        care to preserve the case of mailbox local-parts.
+        In particular, for some hosts, the user "smith" is
+        different from the user "Smith".  However, exploiting
+        the case sensitivity of mailbox local-parts impedes
+        interoperability and is discouraged.
+</pre><a href="#section-4.1-2" class="pilcrow">¶</a>
+</div>
+<p id="section-4.1-3">While case-sensitivity is specified as an absolute
+      requirement, it is important to stress that most
+      implementations do not make case distinctions in local parts
+      (most treat "smith", "Smith", and "SMITH" as the same), and
+      most implementations do preserve the case that is received
+      (from SMTP or HTTP, from address books, or from user
+      input).
+      Maximum interoperability will be achieved by keeping local-parts
+      unchanged (and especially making no attempt to change their case
+      in any way) and by assuming that local-parts that differ only in
+      their case probably refer to the same mailbox.
+      This is particularly important for software that validates
+      user-input fields, where case changes are tempting, but must
+      be avoided.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.1-4">It is also important to note, as we encounter non-ASCII
+      local-parts over time, that case changes are both
+      character-set dependent and language dependent, and attempts
+      to change case without having the full context necessary are
+      likely to be wrong often enough to matter.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
+<p id="section-4.1-5">Additionally, final delivery systems vary in how they interpret
+        the use of delimiters such as '+' and '.' in local-parts.
+        Some systems make distinctions between local-parts
+        such as "smith" and "smith+foo", or "jane.doe" and "janedoe",
+        while others treat them as referring to the same mailboxes
+        respectively.
+        Since only the final delivery system can properly interpret
+        the local-part of an address, originating and transit/relay
+        mail systems are discouraged from making any assumptions as to
+        address equivalency or from making any changes to local-parts
+        containing such delimiters.<a href="#section-4.1-5" class="pilcrow">¶</a></p>
+</section>
+<div id="non-ascii">
+<section id="section-4.2">
+        <h3 id="name-use-of-non-ascii-characters">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-use-of-non-ascii-characters" class="section-name selfRef">Use of non-ASCII Characters</a>
+        </h3>
+<p id="section-4.2-1">Proper generation and transmission of email addresses
+        containing non-ASCII characters is discussed in the SMTPUTF8
+ documents
+        <span>[<a href="#RFC6530" class="cite xref">RFC6530</a>]</span> <span>[<a href="#RFC6531" class="cite xref">RFC6531</a>]</span> <span>[<a href="#RFC6532" class="cite xref">RFC6532</a>]</span>.
+        <span><a href="https://rfc-editor.org/rfc/rfc6530#section-9" class="relref">Section 9</a> of [<a href="#RFC6530" class="cite xref">RFC6530</a>]</span> says: "a downgrade
+        mechanism that transforms the local part of an email address
+        cannot be utilized in transit."
+
+        This is actually just a special case of a principle, discussed
+        in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-emailcore-rfc5321bis-44#section-2.3.11" class="relref">Section 2.3.11</a> of [<a href="#I-D.ietf-emailcore-rfc5321bis" class="cite xref">I-D.ietf-emailcore-rfc5321bis</a>]</span>
+        and elsewhere, that nothing other than the final delivery
+        system should attempt to interpret or alter the local-part of
+        an address.
+        In particular, they MUST NOT:<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2-2.1">use web URI percent encoding
+          (see <span><a href="https://rfc-editor.org/rfc/rfc3986#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>)
+          in either the local-part or the domain-part of an
+          address<a href="#section-4.2-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-4.2-2.2">perform Internationalized Domain Names for Applications
+          (IDNA) Punycode Conversion
+          (see <span><a href="https://rfc-editor.org/rfc/rfc5891#section-4.4" class="relref">Section 4.4</a> of [<a href="#RFC5891" class="cite xref">RFC5891</a>]</span>)
+          on the local-part of an address<a href="#section-4.2-2.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-4.2-3">since none of these encodings will produce an address
+        that is guaranteed to be treated as equivalent to the original
+        one.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2-4">In some cases, servers or clients may be able to use local
+        knowledge to substitute ASCII addresses for specific non-ASCII
+        addresses, but that is beyond the scope of this memo.
+        See <span><a href="https://rfc-editor.org/rfc/rfc6530#section-8" class="relref">Section 8</a> of [<a href="#RFC6530" class="cite xref">RFC6530</a>]</span> for further discussion.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<section id="section-4.3">
+        <h3 id="name-use-and-validation-in-html-">
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-use-and-validation-in-html-" class="section-name selfRef">Use and Validation in HTML and Other Contexts</a>
+        </h3>
+<p id="section-4.3-1">Email addresses are frequently used as input in
+        HyperText Markup Language (HTML) forms
+        (see <span><a href="https://html.spec.whatwg.org/#valid-e-mail-address" class="relref">Section 4.10.5.1.5</a> of [<a href="#HTML5" class="cite xref">HTML5</a>]</span>) but the allowed grammar
+        of these email addresses is not compatible with the
+        grammar for a 'Mailbox' in
+        <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-emailcore-rfc5321bis-44#section-4.1.2" class="relref">Section 4.1.2</a> of [<a href="#I-D.ietf-emailcore-rfc5321bis" class="cite xref">I-D.ietf-emailcore-rfc5321bis</a>]</span>.
+        Specifically, the HTML form grammar:<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.3-2.1">Does not supported quoted strings.<a href="#section-4.3-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-4.3-2.2">Only allows a limited set of characters in domains.<a href="#section-4.3-2.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-4.3-2.3">Allows leading, trailing, or consecutive unquoted dots
+          ('.') in the local-part of email addresses, although few
+          mail systems support them. Consequently, implementations are
+          discouraged from accepting such addresses.<a href="#section-4.3-2.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-4.3-2.4">As of the time this document was written, non-ASCII characters
+   (as discussed in <a href="#non-ascii" class="auto internal xref">Section 4.2</a> above) were also
+   not permitted.<a href="#section-4.3-2.4" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-4.3-3">Consequently, implementations that intend to accept email
+        addresses in HTML forms are encouraged to use at least the the
+        following, more restricted 'Mailbox' grammar:<a href="#section-4.3-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-4.3-4">
+<pre>
+        Limited-Mailbox = Dot-string "@" Domain
+</pre><a href="#section-4.3-4" class="pilcrow">¶</a>
+</div>
+<p id="section-4.3-5">Additionally, some mail systems allow a trailing dot ('.') in the
+        domain part of email addresses (as allowed by
+ <span><a href="#RFC1035" class="internal xref">Domain Names</a> [<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>
+ but prohibited by <span>[<a href="#I-D.ietf-emailcore-rfc5321bis" class="cite xref">I-D.ietf-emailcore-rfc5321bis</a>]</span>),
+ and is hence not interoperable with all systems.
+        Consequently, implementations are encouraged to strip trailing
+        dots from the domain part of email addresses.<a href="#section-4.3-5" class="pilcrow">¶</a></p>
+</section>
+</section>
+<section id="section-5">
+      <h2 id="name-use-of-multipurpose-interne">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-use-of-multipurpose-interne" class="section-name selfRef">Use of Multipurpose Internet Mail Extensions (MIME)</a>
+      </h2>
+<p id="section-5-1">Although the <span><a href="#RFC2045" class="internal xref">Multipurpose Internet
+        Mail Extensions (MIME)</a> [<a href="#RFC2045" class="cite xref">RFC2045</a>]</span> specification and its
+        predecessors have remained separate from the
+        <span><a href="#I-D.ietf-emailcore-rfc5322bis" class="internal xref">Internet Message
+        Format (IMF)</a> [<a href="#I-D.ietf-emailcore-rfc5322bis" class="cite xref">I-D.ietf-emailcore-rfc5322bis</a>]</span>
+        specification and its predecessors, MIME features such as
+        non-textual message bodies, multi-part message bodies, and the
+ use of character sets other than US-ASCII in message bodies
+
+   
+        have become nearly ubiquitous in contemporary
+        email.
+        As a result, IMF generators and parsers are expected to support MIME.<a href="#section-5-1" class="pilcrow">¶</a></p>
+</section>
+<div id="conf-auth">
+<section id="section-6">
+      <h2 id="name-confidentiality-and-authent">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-confidentiality-and-authent" class="section-name selfRef">Confidentiality and Authentication with SMTP</a>
+      </h2>
+<p id="section-6-1">SMTP is specified without embedded mechanisms for
+        authentication or confidentiality; its traffic is therefore
+        "in the clear". Years of operational experience have shown
+        that such transmission exposes the message to easy compromise,
+        including wiretapping and spoofing. To mitigate these risks,
+        several protocols, mechanisms, and extensions have been
+        developed that provide security services to email, some of
+        which are outside the SMTP protocol itself.
+        The most important of these include, but are not limited to:<a href="#section-6-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-6-2.1">
+          <span><a href="#RFC8446" class="internal xref">TLS</a> [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>,
+            <span><a href="#RFC3207" class="internal xref">STARTTLS</a> [<a href="#RFC3207" class="cite xref">RFC3207</a>]</span>,
+            <span><a href="#RFC8461" class="internal xref">MTA-STS</a> [<a href="#RFC8461" class="cite xref">RFC8461</a>]</span>, and
+            <span><a href="#RFC7672" class="internal xref">DANE for SMTP</a> [<a href="#RFC7672" class="cite xref">RFC7672</a>]</span>
+            offer confidentiality services between servers.<a href="#section-6-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-6-2.2">
+          <span><a href="#RFC6376" class="internal xref">DKIM</a> [<a href="#RFC6376" class="cite xref">RFC6376</a>]</span>,
+            <span><a href="#RFC7489" class="internal xref">DMARC</a> [<a href="#RFC7489" class="cite xref">RFC7489</a>]</span>,
+            <span><a href="#RFC8617" class="internal xref">ARC</a> [<a href="#RFC8617" class="cite xref">RFC8617</a>]</span>,
+            <span><a href="#RFC7208" class="internal xref">SPF</a> [<a href="#RFC7208" class="cite xref">RFC7208</a>]</span>,
+            <span><a href="#RFC8551" class="internal xref">S/MIME</a> [<a href="#RFC8551" class="cite xref">RFC8551</a>]</span>,
+            <span><a href="#RFC9580" class="internal xref">OpenPGP</a> [<a href="#RFC9580" class="cite xref">RFC9580</a>]</span>, and
+     <span><a href="#I-D.ietf-lamps-header-protection" class="internal xref">Header Protection for Cryptographically Protected E-mail</a> [<a href="#I-D.ietf-lamps-header-protection" class="cite xref">I-D.ietf-lamps-header-protection</a>]</span>,
+            offer message level authentication services.<a href="#section-6-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-6-2.3">
+          <span><a href="#RFC4954" class="internal xref">SMTP Authentication</a> [<a href="#RFC4954" class="cite xref">RFC4954</a>]</span>
+            offers authenticating clients connecting to server.<a href="#section-6-2.3" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-6-2.4">
+          <span><a href="#RFC8551" class="internal xref">S/MIME</a> [<a href="#RFC8551" class="cite xref">RFC8551</a>]</span> and
+            <span><a href="#RFC9580" class="internal xref">OpenPGP</a> [<a href="#RFC9580" class="cite xref">RFC9580</a>]</span> exist to allow for message
+            confidentiality outside of the operation of SMTP.<a href="#section-6-2.4" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-6-3">The following sections discuss these facilities and their
+        most common uses.<a href="#section-6-3" class="pilcrow">¶</a></p>
+<div id="tls">
+<section id="section-6.1">
+        <h3 id="name-transport-layer-security">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-transport-layer-security" class="section-name selfRef">Transport Layer Security</a>
+        </h3>
+<p id="section-6.1-1">SMTP has evolved over the years so that it is
+          used with the benefit of
+          <span><a href="#RFC8446" class="internal xref">Transport Layer Security (TLS)</a> [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>
+          to provide both confidentiality and authentication in the
+          transmission of messages.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-2">It is important that the reader understand what is meant by
+          the terms "Authentication" and "Confidentiality", and for that
+          we will borrow directly from RFC8446.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-6.1-3.1">Authentication is the process of establishing the identity of one
+            or more of the endpoints of a communication channel. TLS can be
+            used without authentication (as described in
+            <span><a href="#opp-tls" class="internal xref">section 6.2</a> (<a href="#opp-tls" class="auto internal xref">Section 6.2</a>)</span>).
+            When it does use authentication, it typically only authenticates
+            the server side of the communication channel
+            (see <span><a href="#enforced-tls" class="internal xref">section 6.3</a> (<a href="#enforced-tls" class="auto internal xref">Section 6.3</a>)</span>).<a href="#section-6.1-3.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-6.1-3.2">The term "confidentiality" describes a state where the
+            data (i.e., the message) is transmitted in a way that it is
+            only visible to the endpoints of a communication
+            channel.<a href="#section-6.1-3.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-6.1-4">It is not uncommon for implementers to use the term
+          "encryption" to mean "confidentiality", but this is not quite
+          correct. Rather, encryption using TLS is the current method by
+          which confidentiality is achieved with SMTP, but that does not
+          mean that future methods might not be developed.<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+<p id="section-6.1-5">TLS only provides confidentiality while the message is in
+          transit. See <span><a href="#limitations" class="internal xref">Confidentiality Limitations</a> (<a href="#limitations" class="auto internal xref">Section 6.7</a>)</span>.
+          Both of the servers will have access to the plain text of the
+          message. Furthermore, in situations where a
+          message traverses multiple hops through multiple SMTP servers, each
+          intermediate server will have also access to the plain text of the
+          message. There is no guarantee that the message will be stored in
+          an encrypted fashion at its destination.  In fact, storage in plain
+          text should be expected!<a href="#section-6.1-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="opp-tls">
+<section id="section-6.2">
+        <h3 id="name-opportunistic-confidentiali">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-opportunistic-confidentiali" class="section-name selfRef">Opportunistic Confidentiality</a>
+        </h3>
+<p id="section-6.2-1">The most common implementation of message confidentiality
+          is what's known as "opportunistic TLS", which is frequently
+          referred to as "opportunistic encryption". With this method,
+          a receiving server announces in its greeting that it is
+          capable of supporting TLS encryption through the presence of
+          the "STARTTLS" keyword. The sending client then attempts to
+          negotiate an encrypted connection, and if successful,
+          transmits the message in encrypted form; if negotiation
+          fails, the client falls back to sending the message in clear
+          text.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-2">Opportunistic TLS is optional confidentiality due
+          to the ability to fall back to transmission in the clear if
+          a secure connection cannot be established.
+          Opportunistic TLS is often configured to provide
+          confidentiality without authentication, where no effort is
+          made to authenticate the receiving server
+          <span>[<a href="#RFC3207" class="cite xref">RFC3207</a>], <a href="https://rfc-editor.org/rfc/rfc3207#section-4.1" class="relref">Section 4.1</a></span>.
+          Most modern implementations of SMTP support this method
+          and so the vast
+          majority of email traffic is encrypted during its time
+          transiting from the client to the server.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.2-3">Note that opportunistic TLS via the
+          <span><a href="#RFC3207" class="internal xref">STARTTLS</a> [<a href="#RFC3207" class="cite xref">RFC3207</a>]</span> extension is
+          vulnerable to man-in-the-middle attacks.
+          <span><a href="#enforced-tls" class="internal xref">Enforced confidentiality</a> (<a href="#enforced-tls" class="auto internal xref">Section 6.3</a>)</span>
+          can be used to mitigate these attacks.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="enforced-tls">
+<section id="section-6.3">
+        <h3 id="name-enforced-confidentiality-wi">
+<a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-enforced-confidentiality-wi" class="section-name selfRef">Enforced Confidentiality,
+        with Receiving Server Authentication</a>
+        </h3>
+<p id="section-6.3-1">Two protocols exist that move message confidentiality
+          from opportunistic to enforced (with conditions as noted below) -
+          <span><a href="#RFC8461" class="internal xref">MTA-STS</a> [<a href="#RFC8461" class="cite xref">RFC8461</a>]</span> and
+          <span><a href="#RFC7672" class="internal xref">DANE for SMTP</a> [<a href="#RFC7672" class="cite xref">RFC7672</a>]</span>.
+          While they differ in their implementation details, receiving
+          servers relying on either protocol can state that they
+          only accept mail if the transmission can be encrypted with
+          TLS. Support for both protocols is increasing, but is
+          not yet mandatory.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.3-2">These two protocols differ from Opportunistic TLS in that
+          they require receiving server authentication and there is no
+          fallback to sending in the clear.<a href="#section-6.3-2" class="pilcrow">¶</a></p>
+<p id="section-6.3-3">Note that both protocols mentioned in this section rely not only on
+        the receiving server but also the sending client supporting the
+        protocol intended to be used.  If the sending client does not
+        implement the protocol requested by the receiving
+        server, the sending client will use Opportunistic TLS or clear-text
+        to transmit the message.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="message-auth">
+<section id="section-6.4">
+        <h3 id="name-message-level-authenticatio">
+<a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-message-level-authenticatio" class="section-name selfRef">Message-Level Authentication</a>
+        </h3>
+<p id="section-6.4-1">Protocols exist to allow for authentication of different
+        identities associated with an email message:<a href="#section-6.4-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-6.4-2.1">
+            <span><a href="#RFC7208" class="internal xref">SPF</a> [<a href="#RFC7208" class="cite xref">RFC7208</a>]</span> provides a method to
+     ensure that the sending mail server is authorized to
+     originate mail from the sender's domain.<a href="#section-6.4-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-6.4-2.2">
+            <span><a href="#RFC6376" class="internal xref">DKIM</a> [<a href="#RFC6376" class="cite xref">RFC6376</a>]</span> permits a person, role,
+            or organization to claim some responsibility for an email
+            message by associating a <span><a href="#RFC1034" class="internal xref">domain name</a> [<a href="#RFC1034" class="cite xref">RFC1034</a>]</span>
+            with the message, which they are authorized to use.<a href="#section-6.4-2.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-6.4-2.3">
+            <span><a href="#RFC7489" class="internal xref">DMARC</a> [<a href="#RFC7489" class="cite xref">RFC7489</a>]</span>
+          relies on SPF and DKIM to allow for validation of the domain
+          in the visible From header.<a href="#section-6.4-2.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-6.4-2.4">
+            <span><a href="#RFC8617" class="internal xref">ARC</a> [<a href="#RFC8617" class="cite xref">RFC8617</a>]</span> provides a method for each
+          hop to record results of authentication checks performed at
+          that hop.<a href="#section-6.4-2.4" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-6.4-2.5">
+            <span><a href="#RFC8551" class="internal xref">S/MIME</a> [<a href="#RFC8551" class="cite xref">RFC8551</a>]</span>
+            and <span><a href="#RFC9580" class="internal xref">OpenPGP</a> [<a href="#RFC9580" class="cite xref">RFC9580</a>]</span>,
+     along with
+     <span><a href="#I-D.ietf-lamps-header-protection" class="internal xref">Header Protection for
+       Cryptographically Protected E-mail</a> [<a href="#I-D.ietf-lamps-header-protection" class="cite xref">I-D.ietf-lamps-header-protection</a>]</span>,
+     allow for emails to be digitally signed, thereby providing
+     a method to verify that an email was actually sent
+     by the entity claiming to be the sender.<a href="#section-6.4-2.5" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-6.4-3">All of these are outside the scope of this document, as
+          they are outside the scope of SMTP. They deal with
+          validating the authorized usage of one or more domains in an
+          email message, and not with establishing the identity of the
+          receiving server.<a href="#section-6.4-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<section id="section-6.5">
+        <h3 id="name-smtp-authentication">
+<a href="#section-6.5" class="section-number selfRef">6.5. </a><a href="#name-smtp-authentication" class="section-name selfRef">SMTP Authentication</a>
+        </h3>
+<p id="section-6.5-1"><span><a href="#RFC4954" class="internal xref">SMTP Authentication</a> [<a href="#RFC4954" class="cite xref">RFC4954</a>]</span>,
+          which is often abbreviated as SMTP AUTH,
+          is an extension to SMTP. While its name might suggest
+          that it would be within scope for this section of the
+          Applicability Statement, nothing could be further from the
+          truth.<a href="#section-6.5-1" class="pilcrow">¶</a></p>
+<p id="section-6.5-2">SMTP AUTH defines a method for a client to identify
+          itself to a Message Submission Agent (MSA) when presenting a
+          message for transmission, usually using ports 465 or 587 rather than
+          the traditional port 25. The most common implementation of
+          SMTP AUTH is for a person to present a username and password
+          to their mailbox provider's outbound SMTP server when
+        configuring their MUA for sending mail.<a href="#section-6.5-2" class="pilcrow">¶</a></p>
+<p id="section-6.5-3">SMPT AUTH MAY be used to limit unauthorized use of VRFY and
+        EXPN commands as described in
+        <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-emailcore-rfc5321bis-44#section-7.3" class="relref">Section 7.3</a> of [<a href="#I-D.ietf-emailcore-rfc5321bis" class="cite xref">I-D.ietf-emailcore-rfc5321bis</a>]</span>.<a href="#section-6.5-3" class="pilcrow">¶</a></p>
+</section>
+<div id="message-conf">
+<section id="section-6.6">
+        <h3 id="name-message-level-confidentiali">
+<a href="#section-6.6" class="section-number selfRef">6.6. </a><a href="#name-message-level-confidentiali" class="section-name selfRef">Message-Level Confidentiality</a>
+        </h3>
+<p id="section-6.6-1">Protocols such as <span><a href="#RFC8551" class="internal xref">S/MIME</a> [<a href="#RFC8551" class="cite xref">RFC8551</a>]</span>
+          and <span><a href="#RFC9580" class="internal xref">OpenPGP</a> [<a href="#RFC9580" class="cite xref">RFC9580</a>]</span> exist to allow for
+          message confidentiality outside of the operation of
+          SMTP. That is to say, using these protocols results in
+          encryption of the message body prior to its being submitted to
+          the SMTP communications channel, and decryption of the
+          message is the responsibility of the message
+          recipient. There are numerous implementations of these
+          protocols, too many to list here. As they operate fully
+          independent of SMTP, they are out of scope for this
+          document.<a href="#section-6.6-1" class="pilcrow">¶</a></p>
+<p id="section-6.6-2"><span><a href="#I-D.ietf-lamps-header-protection" class="internal xref">Header Protection for
+          Cryptographically Protected E-mail</a> [<a href="#I-D.ietf-lamps-header-protection" class="cite xref">I-D.ietf-lamps-header-protection</a>]</span> extends
+          S/MIME such that some message headers can be encrypted.<a href="#section-6.6-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="limitations">
+<section id="section-6.7">
+        <h3 id="name-confidentiality-limitations">
+<a href="#section-6.7" class="section-number selfRef">6.7. </a><a href="#name-confidentiality-limitations" class="section-name selfRef">Confidentiality Limitations</a>
+        </h3>
+<p id="section-6.7-1">While technologies like TLS can encrypt the entirety of a
+        message in transit, it might also be desirable to keep parts of
+        the message confidential from SMTP servers. Some of the protocols
+        listed in <span><a href="#message-conf" class="internal xref">Message-Level Confidentiality</a> (<a href="#message-conf" class="auto internal xref">Section 6.6</a>)</span>
+        only cover the message body, and none of the headers. It is difficult and
+        perhaps undesirable to encrypt all message headers. See the Privacy
+        Considerations in
+        <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-lamps-header-protection-25#section-11" class="relref">Section 11</a> of Header Protection for
+          Cryptographically Protected E-mail [<a href="#I-D.ietf-lamps-header-protection" class="cite xref">I-D.ietf-lamps-header-protection</a>]</span> for an extended explanation.<a href="#section-6.7-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<section id="section-6.8">
+        <h3 id="name-confidentiality-requirement">
+<a href="#section-6.8" class="section-number selfRef">6.8. </a><a href="#name-confidentiality-requirement" class="section-name selfRef">Confidentiality Requirements</a>
+        </h3>
+<p id="section-6.8-1">The vast majority of email sent on the Internet at present
+        does not use message-level confidentiality. It has been
+        recognized that Internet traffic is exposed to both active
+        attack and passive monitoring
+        (see <span><a href="#RFC3365" class="internal xref">BCP61</a> [<a href="#RFC3365" class="cite xref">RFC3365</a>]</span>,
+        <span><a href="#RFC1984" class="internal xref">BCP200</a> [<a href="#RFC1984" class="cite xref">RFC1984</a>]</span>), and therefore that
+        message transmission over SMTP is subject to both.
+        To mitigate these risks, opportunistic confidentiality is now
+        widely implemented and used in Internet email, and some
+        deployment and use of enforced confidentiality is also now
+        seen. Therefore, confidentiality (for example, the STARTTLS
+        extension) MUST be implemented by SMTP servers in order to at
+        least provide over-the-wire confidentiality during an
+        individual SMTP exchange. That said, there are many legacy
+        implementations of SMTP that are still in widespread use in
+        both private and Internet-connected networks. Therefore, SMTP servers
+        MUST be configurable to allow for receiving messages without
+        confidentiality between servers in order to maximize
+        interoperation.<a href="#section-6.8-1" class="pilcrow">¶</a></p>
+</section>
+</section>
+</div>
+<div id="Acknowledgments">
+<section id="section-7">
+      <h2 id="name-acknowledgments">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
+      </h2>
+<p id="section-7-1">The Emailcore group arose out of discussions on the
+        ietf-smtp group over changes and additions that should be made
+        to the core email protocols.
+        It was agreed upon that it was time to create a working group
+        that would fix many potential errors and opportunities for
+        misunderstandings within the RFCs.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-2">Special thanks to the following for providing significant
+        portions of text for this document: Dave Crocker, Todd Herr,
+        Tero Kivinen,
+        Barry Leiba, John Levine, Alexey Melnikov, Pete Resnick, and
+        E. Sam.<a href="#section-7-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="IANA">
+<section id="section-8">
+      <h2 id="name-iana-considerations">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<p id="section-8-1">This memo includes no requests to or actions for IANA.  The
+      IANA registries associated with the protocol specifications
+      it references are specified in their respective documents.<a href="#section-8-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="Security">
+<section id="section-9">
+      <h2 id="name-security-considerations">
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-9-1">Security and privacy considerations are discussed throughout
+  this document as they pertain to the referenced specifications.
+  
+   Special note should be taken of the interaction between
+   confidentiality and authentication mechanism that are applicable
+   to Internet links and therefore potentially sensitive to the
+   multi-hop design of SMTP.  Unless the relevant messages and
+   mechanisms are protected from tampering or content exposure on
+   systems that are the endpoints of those links, the security of
+   the mechanisms depends on trust in those intermediate
+   endpoints.<a href="#section-9-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<section id="section-10">
+      <h2 id="name-references">
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<section id="section-10.1">
+        <h3 id="name-normative-references">
+<a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
+<dl class="references">
+<dt id="RFC2026">[RFC2026]</dt>
+        <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"The Internet Standards Process -- Revision 3"</span>, <span class="seriesInfo">BCP 9</span>, <span class="seriesInfo">RFC 2026</span>, <span class="seriesInfo">DOI 10.17487/RFC2026</span>, <time datetime="1996-10" class="refDate">October 1996</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2026">https://www.rfc-editor.org/info/rfc2026</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2045">[RFC2045]</dt>
+        <dd>
+<span class="refAuthor">Freed, N.</span> and <span class="refAuthor">N. Borenstein</span>, <span class="refTitle">"Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies"</span>, <span class="seriesInfo">RFC 2045</span>, <span class="seriesInfo">DOI 10.17487/RFC2045</span>, <time datetime="1996-11" class="refDate">November 1996</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2045">https://www.rfc-editor.org/info/rfc2045</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2119">[RFC2119]</dt>
+        <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+      <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+<section id="section-10.2">
+        <h3 id="name-informative-references">
+<a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="HTML5">[HTML5]</dt>
+        <dd>
+<span class="refAuthor">Web Hypertext Application Technology Working Group</span>, <span class="refTitle">"HTML Living Standard"</span>, <time datetime="2022-10-04" class="refDate">4 October 2022</time>, <span>&lt;<a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-emailcore-rfc5321bis">[I-D.ietf-emailcore-rfc5321bis]</dt>
+        <dd>
+<span class="refAuthor">Klensin, J. C.</span>, <span class="refTitle">"Simple Mail Transfer Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-emailcore-rfc5321bis-44</span>, <time datetime="2025-07-31" class="refDate">31 July 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-emailcore-rfc5321bis-44">https://datatracker.ietf.org/doc/html/draft-ietf-emailcore-rfc5321bis-44</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-emailcore-rfc5322bis">[I-D.ietf-emailcore-rfc5322bis]</dt>
+        <dd>
+<span class="refAuthor">Resnick, P.</span>, <span class="refTitle">"Internet Message Format"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-emailcore-rfc5322bis-12</span>, <time datetime="2024-06-13" class="refDate">13 June 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-emailcore-rfc5322bis-12">https://datatracker.ietf.org/doc/html/draft-ietf-emailcore-rfc5322bis-12</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-lamps-header-protection">[I-D.ietf-lamps-header-protection]</dt>
+        <dd>
+<span class="refAuthor">Gillmor, D. K.</span>, <span class="refAuthor">Hoeneisen, B.</span>, and <span class="refAuthor">A. Melnikov</span>, <span class="refTitle">"Header Protection for Cryptographically Protected E-mail"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-lamps-header-protection-25</span>, <time datetime="2025-01-06" class="refDate">6 January 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-lamps-header-protection-25">https://datatracker.ietf.org/doc/html/draft-ietf-lamps-header-protection-25</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC1034">[RFC1034]</dt>
+        <dd>
+<span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - concepts and facilities"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1034</span>, <span class="seriesInfo">DOI 10.17487/RFC1034</span>, <time datetime="1987-11" class="refDate">November 1987</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1034">https://www.rfc-editor.org/info/rfc1034</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC1035">[RFC1035]</dt>
+        <dd>
+<span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - implementation and specification"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1035</span>, <span class="seriesInfo">DOI 10.17487/RFC1035</span>, <time datetime="1987-11" class="refDate">November 1987</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1035">https://www.rfc-editor.org/info/rfc1035</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC1984">[RFC1984]</dt>
+        <dd>
+<span class="refAuthor">IAB</span> and <span class="refAuthor">IESG</span>, <span class="refTitle">"IAB and IESG Statement on Cryptographic Technology and the Internet"</span>, <span class="seriesInfo">BCP 200</span>, <span class="seriesInfo">RFC 1984</span>, <span class="seriesInfo">DOI 10.17487/RFC1984</span>, <time datetime="1996-08" class="refDate">August 1996</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1984">https://www.rfc-editor.org/info/rfc1984</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2034">[RFC2034]</dt>
+        <dd>
+<span class="refAuthor">Freed, N.</span>, <span class="refTitle">"SMTP Service Extension for Returning Enhanced Error Codes"</span>, <span class="seriesInfo">RFC 2034</span>, <span class="seriesInfo">DOI 10.17487/RFC2034</span>, <time datetime="1996-10" class="refDate">October 1996</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2034">https://www.rfc-editor.org/info/rfc2034</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2920">[RFC2920]</dt>
+        <dd>
+<span class="refAuthor">Freed, N.</span>, <span class="refTitle">"SMTP Service Extension for Command Pipelining"</span>, <span class="seriesInfo">STD 60</span>, <span class="seriesInfo">RFC 2920</span>, <span class="seriesInfo">DOI 10.17487/RFC2920</span>, <time datetime="2000-09" class="refDate">September 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2920">https://www.rfc-editor.org/info/rfc2920</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3207">[RFC3207]</dt>
+        <dd>
+<span class="refAuthor">Hoffman, P.</span>, <span class="refTitle">"SMTP Service Extension for Secure SMTP over Transport Layer Security"</span>, <span class="seriesInfo">RFC 3207</span>, <span class="seriesInfo">DOI 10.17487/RFC3207</span>, <time datetime="2002-02" class="refDate">February 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3207">https://www.rfc-editor.org/info/rfc3207</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3365">[RFC3365]</dt>
+        <dd>
+<span class="refAuthor">Schiller, J.</span>, <span class="refTitle">"Strong Security Requirements for Internet Engineering Task Force Standard Protocols"</span>, <span class="seriesInfo">BCP 61</span>, <span class="seriesInfo">RFC 3365</span>, <span class="seriesInfo">DOI 10.17487/RFC3365</span>, <time datetime="2002-08" class="refDate">August 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3365">https://www.rfc-editor.org/info/rfc3365</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3461">[RFC3461]</dt>
+        <dd>
+<span class="refAuthor">Moore, K.</span>, <span class="refTitle">"Simple Mail Transfer Protocol (SMTP) Service Extension for Delivery Status Notifications (DSNs)"</span>, <span class="seriesInfo">RFC 3461</span>, <span class="seriesInfo">DOI 10.17487/RFC3461</span>, <time datetime="2003-01" class="refDate">January 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3461">https://www.rfc-editor.org/info/rfc3461</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3463">[RFC3463]</dt>
+        <dd>
+<span class="refAuthor">Vaudreuil, G.</span>, <span class="refTitle">"Enhanced Mail System Status Codes"</span>, <span class="seriesInfo">RFC 3463</span>, <span class="seriesInfo">DOI 10.17487/RFC3463</span>, <time datetime="2003-01" class="refDate">January 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3463">https://www.rfc-editor.org/info/rfc3463</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3464">[RFC3464]</dt>
+        <dd>
+<span class="refAuthor">Moore, K.</span> and <span class="refAuthor">G. Vaudreuil</span>, <span class="refTitle">"An Extensible Message Format for Delivery Status Notifications"</span>, <span class="seriesInfo">RFC 3464</span>, <span class="seriesInfo">DOI 10.17487/RFC3464</span>, <time datetime="2003-01" class="refDate">January 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3464">https://www.rfc-editor.org/info/rfc3464</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3986">[RFC3986]</dt>
+        <dd>
+<span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4954">[RFC4954]</dt>
+        <dd>
+<span class="refAuthor">Siemborski, R., Ed.</span> and <span class="refAuthor">A. Melnikov, Ed.</span>, <span class="refTitle">"SMTP Service Extension for Authentication"</span>, <span class="seriesInfo">RFC 4954</span>, <span class="seriesInfo">DOI 10.17487/RFC4954</span>, <time datetime="2007-07" class="refDate">July 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4954">https://www.rfc-editor.org/info/rfc4954</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5248">[RFC5248]</dt>
+        <dd>
+<span class="refAuthor">Hansen, T.</span> and <span class="refAuthor">J. Klensin</span>, <span class="refTitle">"A Registry for SMTP Enhanced Mail System Status Codes"</span>, <span class="seriesInfo">BCP 138</span>, <span class="seriesInfo">RFC 5248</span>, <span class="seriesInfo">DOI 10.17487/RFC5248</span>, <time datetime="2008-06" class="refDate">June 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5248">https://www.rfc-editor.org/info/rfc5248</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5321">[RFC5321]</dt>
+        <dd>
+<span class="refAuthor">Klensin, J.</span>, <span class="refTitle">"Simple Mail Transfer Protocol"</span>, <span class="seriesInfo">RFC 5321</span>, <span class="seriesInfo">DOI 10.17487/RFC5321</span>, <time datetime="2008-10" class="refDate">October 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5321">https://www.rfc-editor.org/info/rfc5321</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5891">[RFC5891]</dt>
+        <dd>
+<span class="refAuthor">Klensin, J.</span>, <span class="refTitle">"Internationalized Domain Names in Applications (IDNA): Protocol"</span>, <span class="seriesInfo">RFC 5891</span>, <span class="seriesInfo">DOI 10.17487/RFC5891</span>, <time datetime="2010-08" class="refDate">August 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5891">https://www.rfc-editor.org/info/rfc5891</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6152">[RFC6152]</dt>
+        <dd>
+<span class="refAuthor">Klensin, J.</span>, <span class="refAuthor">Freed, N.</span>, <span class="refAuthor">Rose, M.</span>, and <span class="refAuthor">D. Crocker, Ed.</span>, <span class="refTitle">"SMTP Service Extension for 8-bit MIME Transport"</span>, <span class="seriesInfo">STD 71</span>, <span class="seriesInfo">RFC 6152</span>, <span class="seriesInfo">DOI 10.17487/RFC6152</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6152">https://www.rfc-editor.org/info/rfc6152</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6376">[RFC6376]</dt>
+        <dd>
+<span class="refAuthor">Crocker, D., Ed.</span>, <span class="refAuthor">Hansen, T., Ed.</span>, and <span class="refAuthor">M. Kucherawy, Ed.</span>, <span class="refTitle">"DomainKeys Identified Mail (DKIM) Signatures"</span>, <span class="seriesInfo">STD 76</span>, <span class="seriesInfo">RFC 6376</span>, <span class="seriesInfo">DOI 10.17487/RFC6376</span>, <time datetime="2011-09" class="refDate">September 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6376">https://www.rfc-editor.org/info/rfc6376</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6522">[RFC6522]</dt>
+        <dd>
+<span class="refAuthor">Kucherawy, M., Ed.</span>, <span class="refTitle">"The Multipart/Report Media Type for the Reporting of Mail System Administrative Messages"</span>, <span class="seriesInfo">STD 73</span>, <span class="seriesInfo">RFC 6522</span>, <span class="seriesInfo">DOI 10.17487/RFC6522</span>, <time datetime="2012-01" class="refDate">January 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6522">https://www.rfc-editor.org/info/rfc6522</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6530">[RFC6530]</dt>
+        <dd>
+<span class="refAuthor">Klensin, J.</span> and <span class="refAuthor">Y. Ko</span>, <span class="refTitle">"Overview and Framework for Internationalized Email"</span>, <span class="seriesInfo">RFC 6530</span>, <span class="seriesInfo">DOI 10.17487/RFC6530</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6530">https://www.rfc-editor.org/info/rfc6530</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6531">[RFC6531]</dt>
+        <dd>
+<span class="refAuthor">Yao, J.</span> and <span class="refAuthor">W. Mao</span>, <span class="refTitle">"SMTP Extension for Internationalized Email"</span>, <span class="seriesInfo">RFC 6531</span>, <span class="seriesInfo">DOI 10.17487/RFC6531</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6531">https://www.rfc-editor.org/info/rfc6531</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6532">[RFC6532]</dt>
+        <dd>
+<span class="refAuthor">Yang, A.</span>, <span class="refAuthor">Steele, S.</span>, and <span class="refAuthor">N. Freed</span>, <span class="refTitle">"Internationalized Email Headers"</span>, <span class="seriesInfo">RFC 6532</span>, <span class="seriesInfo">DOI 10.17487/RFC6532</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6532">https://www.rfc-editor.org/info/rfc6532</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6533">[RFC6533]</dt>
+        <dd>
+<span class="refAuthor">Hansen, T., Ed.</span>, <span class="refAuthor">Newman, C.</span>, and <span class="refAuthor">A. Melnikov</span>, <span class="refTitle">"Internationalized Delivery Status and Disposition Notifications"</span>, <span class="seriesInfo">RFC 6533</span>, <span class="seriesInfo">DOI 10.17487/RFC6533</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6533">https://www.rfc-editor.org/info/rfc6533</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7085">[RFC7085]</dt>
+        <dd>
+<span class="refAuthor">Levine, J.</span> and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Top-Level Domains That Are Already Dotless"</span>, <span class="seriesInfo">RFC 7085</span>, <span class="seriesInfo">DOI 10.17487/RFC7085</span>, <time datetime="2013-12" class="refDate">December 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7085">https://www.rfc-editor.org/info/rfc7085</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7208">[RFC7208]</dt>
+        <dd>
+<span class="refAuthor">Kitterman, S.</span>, <span class="refTitle">"Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1"</span>, <span class="seriesInfo">RFC 7208</span>, <span class="seriesInfo">DOI 10.17487/RFC7208</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7208">https://www.rfc-editor.org/info/rfc7208</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7489">[RFC7489]</dt>
+        <dd>
+<span class="refAuthor">Kucherawy, M., Ed.</span> and <span class="refAuthor">E. Zwicky, Ed.</span>, <span class="refTitle">"Domain-based Message Authentication, Reporting, and Conformance (DMARC)"</span>, <span class="seriesInfo">RFC 7489</span>, <span class="seriesInfo">DOI 10.17487/RFC7489</span>, <time datetime="2015-03" class="refDate">March 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7489">https://www.rfc-editor.org/info/rfc7489</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7672">[RFC7672]</dt>
+        <dd>
+<span class="refAuthor">Dukhovni, V.</span> and <span class="refAuthor">W. Hardaker</span>, <span class="refTitle">"SMTP Security via Opportunistic DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 7672</span>, <span class="seriesInfo">DOI 10.17487/RFC7672</span>, <time datetime="2015-10" class="refDate">October 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7672">https://www.rfc-editor.org/info/rfc7672</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8446">[RFC8446]</dt>
+        <dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8461">[RFC8461]</dt>
+        <dd>
+<span class="refAuthor">Margolis, D.</span>, <span class="refAuthor">Risher, M.</span>, <span class="refAuthor">Ramakrishnan, B.</span>, <span class="refAuthor">Brotman, A.</span>, and <span class="refAuthor">J. Jones</span>, <span class="refTitle">"SMTP MTA Strict Transport Security (MTA-STS)"</span>, <span class="seriesInfo">RFC 8461</span>, <span class="seriesInfo">DOI 10.17487/RFC8461</span>, <time datetime="2018-09" class="refDate">September 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8461">https://www.rfc-editor.org/info/rfc8461</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8551">[RFC8551]</dt>
+        <dd>
+<span class="refAuthor">Schaad, J.</span>, <span class="refAuthor">Ramsdell, B.</span>, and <span class="refAuthor">S. Turner</span>, <span class="refTitle">"Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 4.0 Message Specification"</span>, <span class="seriesInfo">RFC 8551</span>, <span class="seriesInfo">DOI 10.17487/RFC8551</span>, <time datetime="2019-04" class="refDate">April 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8551">https://www.rfc-editor.org/info/rfc8551</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8617">[RFC8617]</dt>
+        <dd>
+<span class="refAuthor">Andersen, K.</span>, <span class="refAuthor">Long, B., Ed.</span>, <span class="refAuthor">Blank, S., Ed.</span>, and <span class="refAuthor">M. Kucherawy, Ed.</span>, <span class="refTitle">"The Authenticated Received Chain (ARC) Protocol"</span>, <span class="seriesInfo">RFC 8617</span>, <span class="seriesInfo">DOI 10.17487/RFC8617</span>, <time datetime="2019-07" class="refDate">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8617">https://www.rfc-editor.org/info/rfc8617</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9580">[RFC9580]</dt>
+      <dd>
+<span class="refAuthor">Wouters, P., Ed.</span>, <span class="refAuthor">Huigens, D.</span>, <span class="refAuthor">Winter, J.</span>, and <span class="refAuthor">Y. Niibe</span>, <span class="refTitle">"OpenPGP"</span>, <span class="seriesInfo">RFC 9580</span>, <span class="seriesInfo">DOI 10.17487/RFC9580</span>, <time datetime="2024-07" class="refDate">July 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9580">https://www.rfc-editor.org/info/rfc9580</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</section>
+<div id="ChangeLog">
+<section id="appendix-A">
+      <h2 id="name-change-log">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-change-log" class="section-name selfRef">Change Log</a>
+      </h2>
+<p id="appendix-A-1">RFC Editor: Please remove this appendix before publication.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<section id="appendix-A.1">
+        <h3 id="name-changes-from-draft-klensin-">
+<a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-changes-from-draft-klensin-" class="section-name selfRef">Changes from draft-klensin-email-core-as-00 (2020-03-30)
+        to draft-ietf-emailcore-as-00</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.1-1.1"> Change of filename, metadata, and date to reflect
+          transition to WG document for new emailcore WG.
+          No other substantive changes<a href="#appendix-A.1-1.1" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.2">
+        <h3 id="name-changes-from-draft-ietf-ema">
+<a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-changes-from-draft-ietf-ema" class="section-name selfRef">Changes from draft-ietf-emailcore-as-00 (2020-10-06) to -01</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.2-1.1">Added co-authors (list is in alphabetical order for
+          the present).<a href="#appendix-A.2-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.2-1.2"> Updated references to 5321bis and 5322bis.<a href="#appendix-A.2-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.2-1.3"> Added note at top, "This version is provided as a
+          document management convenience to update the author
+          list and make an un-expired version available to the
+          WG.  There are no substantive changes from the prior
+          version", which should be removed for version -02.<a href="#appendix-A.2-1.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.3">
+        <h3 id="name-changes-from-draft-ietf-emai">
+<a href="#appendix-A.3" class="section-number selfRef">A.3. </a><a href="#name-changes-from-draft-ietf-emai" class="section-name selfRef">Changes from draft-ietf-emailcore-as-01 (2021-04-09) to -02</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.3-1.1"> Added new editors and also added some issues the
+          emailcore group will be dealing with.<a href="#appendix-A.3-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.3-1.2"> Added reference to RFC 6648.<a href="#appendix-A.3-1.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.4">
+        <h3 id="name-changes-from-draft-ietf-email">
+<a href="#appendix-A.4" class="section-number selfRef">A.4. </a><a href="#name-changes-from-draft-ietf-email" class="section-name selfRef">Changes from draft-ietf-emailcore-as-02 (2021-08-06) to -03</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.4-1.1"> Moved discussion of address-literals (issue #1) and
+          domain names in EHLO (issue #19) under SMTP Provisions
+          section<a href="#appendix-A.4-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.4-1.2"> Moved discussion of empty quoted-strings under
+          Message Format Provisions section<a href="#appendix-A.4-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.4-1.3"> Added text on use of addresses in TLDs (issue #50)<a href="#appendix-A.4-1.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.4-1.4"> Marked all authors as editors.<a href="#appendix-A.4-1.4" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.4-1.5"> Miscellaneous editorial changes.<a href="#appendix-A.4-1.5" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.5">
+        <h3 id="name-changes-from-draft-ietf-emailc">
+<a href="#appendix-A.5" class="section-number selfRef">A.5. </a><a href="#name-changes-from-draft-ietf-emailc" class="section-name selfRef">Changes from draft-ietf-emailcore-as-03 (2022-01-31) to -04</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.5-1.1">Added requirements for SMTP extensions (issue #40).<a href="#appendix-A.5-1.1" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.6">
+        <h3 id="name-changes-from-draft-ietf-emailco">
+<a href="#appendix-A.6" class="section-number selfRef">A.6. </a><a href="#name-changes-from-draft-ietf-emailco" class="section-name selfRef">Changes from draft-ietf-emailcore-as-04 (2022-05-21) to -05</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.6-1.1">Added text addressing use ofx enhanced status codes.<a href="#appendix-A.6-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.6-1.2">Added text addressing confidentiality and authentication
+          (issue #54).<a href="#appendix-A.6-1.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.7">
+        <h3 id="name-changes-from-draft-ietf-emailcor">
+<a href="#appendix-A.7" class="section-number selfRef">A.7. </a><a href="#name-changes-from-draft-ietf-emailcor" class="section-name selfRef">Changes from draft-ietf-emailcore-as-05 (2022-10-24) to -06</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.7-1.1">Converted source to xml2rfc v3.<a href="#appendix-A.7-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.7-1.2">Replaced placeholder Introduction with new text.<a href="#appendix-A.7-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.7-1.3">Updated keywords boilerplate.<a href="#appendix-A.7-1.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.7-1.4">Added text on interoperability of email addresses in
+          general and use in HTML forms (issue #51).<a href="#appendix-A.7-1.4" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.7-1.5">Added text stating that implementations are expected to
+          support MIME (issue #65).<a href="#appendix-A.7-1.5" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.7-1.6">Added placeholders for issues #38 and #55.<a href="#appendix-A.7-1.6" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.7-1.7">Add list of contributors in Acknowledgments.<a href="#appendix-A.7-1.7" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.7-1.8">Added minimal Security Considerations section.<a href="#appendix-A.7-1.8" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.8">
+        <h3 id="name-changes-from-draft-ietf-emailcore">
+<a href="#appendix-A.8" class="section-number selfRef">A.8. </a><a href="#name-changes-from-draft-ietf-emailcore" class="section-name selfRef">Changes from draft-ietf-emailcore-as-06 (2022-11-07) to -07</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.8-1.1">Added text addressing use of FOR clause in Received
+          header fields (issue #55).<a href="#appendix-A.8-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.8-1.2">Miscellaneous editorial changes.<a href="#appendix-A.8-1.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.9">
+        <h3 id="name-changes-from-draft-ietf-emailcore-">
+<a href="#appendix-A.9" class="section-number selfRef">A.9. </a><a href="#name-changes-from-draft-ietf-emailcore-" class="section-name selfRef">Changes from draft-ietf-emailcore-as-07 (2023-03-13) to -08</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.9-1.1">Added text addressing use of Received
+          header fields by MUAs (issue #85).<a href="#appendix-A.9-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.9-1.2">Added advice against use of Percent-Encoding non-ASCII
+          characters in email addresses (issue #78).<a href="#appendix-A.9-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.9-1.3">Miscellaneous editorial changes.<a href="#appendix-A.9-1.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.10">
+        <h3 id="name-changes-from-draft-ietf-emailcore-a">
+<a href="#appendix-A.10" class="section-number selfRef">A.10. </a><a href="#name-changes-from-draft-ietf-emailcore-a" class="section-name selfRef">Changes from draft-ietf-emailcore-as-08 (2023-12-18) to -09</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.10-1.1">Acknowledge the existence of port 465 for submission
+          (issue #80).<a href="#appendix-A.10-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.10-1.2">Remove "Use of Time Zones in Date and Received Header
+          Fields" placeholder (issue #66).<a href="#appendix-A.10-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.10-1.3">Miscellaneous editorial changes.<a href="#appendix-A.10-1.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.11">
+        <h3 id="name-changes-from-draft-ietf-emailcore-a-2">
+<a href="#appendix-A.11" class="section-number selfRef">A.11. </a><a href="#name-changes-from-draft-ietf-emailcore-a-2" class="section-name selfRef">Changes from draft-ietf-emailcore-as-09 (2024-07-02) to -10</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.11-1.1">Added Open Issues Section<a href="#appendix-A.11-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.11-1.2">Removed placeholder for issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/38">
+            #38 - Clarify 78 octet limit versus 998 line length
+          limit</a><a href="#appendix-A.11-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.11-1.3">Applied "final" proposed text for issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/78">
+          #78 - Advice against using URL %-encoding on non-ASCII email
+          addresses</a><a href="#appendix-A.11-1.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.11-1.4">Applied proposed text for issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/84">
+          #84 - Handling of Trace Header Fields by MUAs</a><a href="#appendix-A.11-1.4" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.12">
+        <h3 id="name-changes-from-draft-ietf-emailcore-a-3">
+<a href="#appendix-A.12" class="section-number selfRef">A.12. </a><a href="#name-changes-from-draft-ietf-emailcore-a-3" class="section-name selfRef">Changes from draft-ietf-emailcore-as-10 (2024-07-03) to -11</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.12-1.1">Added Open Issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/94">
+            #94 - Use of Quoted Strings</a><a href="#appendix-A.12-1.1" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.13">
+        <h3 id="name-changes-from-draft-ietf-emailcore-a-4">
+<a href="#appendix-A.13" class="section-number selfRef">A.13. </a><a href="#name-changes-from-draft-ietf-emailcore-a-4" class="section-name selfRef">Changes from draft-ietf-emailcore-as-11 (2024-10-21) to -12</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.13-1.1">Applied new proposed text to <a href="#empty-quoted" class="auto internal xref">Section 3.1</a><a href="#appendix-A.13-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.13-1.2">Applied new proposed text for issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/40">
+          #40 - Recommended SMTP Extensions</a><a href="#appendix-A.13-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.13-1.3">Applied new proposed text for issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/78">
+          #78 - Advice against using URL %-encoding on non-ASCII email
+          addresses</a><a href="#appendix-A.13-1.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.13-1.4">Applied new proposed text for issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/84">
+          #84 - Handling of Trace Header Fields by MUAs</a><a href="#appendix-A.13-1.4" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.13-1.5">Applied new proposed text for issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/85">
+            #85 - What mail agents should do/not do with Received
+          header fields</a><a href="#appendix-A.13-1.5" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.14">
+        <h3 id="name-changes-from-draft-ietf-emailcore-a-5">
+<a href="#appendix-A.14" class="section-number selfRef">A.14. </a><a href="#name-changes-from-draft-ietf-emailcore-a-5" class="section-name selfRef">Changes from draft-ietf-emailcore-as-12 (2024-11-09) to -13</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.14-1.1">Fixed discussion of Punycode (domain-part -&gt; local-part)
+          in <a href="#non-ascii" class="auto internal xref">Section 4.2</a><a href="#appendix-A.14-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.14-1.2">Removed Keywords from discussion in
+          <a href="#empty-quoted" class="auto internal xref">Section 3.1</a><a href="#appendix-A.14-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.14-1.3">Added example of empty display-name in
+          <a href="#empty-quoted" class="auto internal xref">Section 3.1</a><a href="#appendix-A.14-1.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.15">
+        <h3 id="name-changes-from-draft-ietf-emailcore-a-6">
+<a href="#appendix-A.15" class="section-number selfRef">A.15. </a><a href="#name-changes-from-draft-ietf-emailcore-a-6" class="section-name selfRef">Changes from draft-ietf-emailcore-as-13 (2025-01-30) to -14</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.15-1.1">Added STARTTLS to the MUST implement list in
+          <a href="#smtp-ext" class="auto internal xref">Section 2.4</a><a href="#appendix-A.15-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.15-1.2">Added Alexey Melnikov's proposed text for issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/94">
+            #93 - "VRFY, EXPN, and Security" should point to SMTP AUTH RFC</a><a href="#appendix-A.15-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.15-1.3">Applied (with some editorial changes), Tero Kivinen's proposed
+          text to <a href="#conf-auth" class="auto internal xref">Section 6</a>.<a href="#appendix-A.15-1.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.16">
+        <h3 id="name-changes-from-draft-ietf-emailcore-a-7">
+<a href="#appendix-A.16" class="section-number selfRef">A.16. </a><a href="#name-changes-from-draft-ietf-emailcore-a-7" class="section-name selfRef">Changes from draft-ietf-emailcore-as-14 (2025-02-27) to -15</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.16-1.1">Miscellaneous editorial changes<a href="#appendix-A.16-1.1" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.17">
+        <h3 id="name-changes-from-draft-ietf-emailcore-a-8">
+<a href="#appendix-A.17" class="section-number selfRef">A.17. </a><a href="#name-changes-from-draft-ietf-emailcore-a-8" class="section-name selfRef">Changes from draft-ietf-emailcore-as-15 (2025-03-18) to -16</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.17-1.1">Changed "FOR clause MUST NOT be generated if the message
+   copy is associated with multiple recipients from multiple
+   SMTP RCPT commands" to "SHOULD NOT".<a href="#appendix-A.17-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.17-1.2">Reintroduced examples of non-interoperable local-parts
+   containing empty quoted strings (issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/94">
+            #93</a>).<a href="#appendix-A.17-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.17-1.3">Added short descriptions of SPF and DKIM, and added
+   S/MIME, OpenPGP, and Header Protection for Cryptographically
+   Protected E-mail as methods of Message-Level Authentication
+   (issues
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/94">
+            #110</a>,
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/94">
+            #132</a>,
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/94">
+            #133</a>).<a href="#appendix-A.17-1.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.18">
+        <h3 id="name-changes-from-draft-ietf-emailcore-a-9">
+<a href="#appendix-A.18" class="section-number selfRef">A.18. </a><a href="#name-changes-from-draft-ietf-emailcore-a-9" class="section-name selfRef">Changes from draft-ietf-emailcore-as-16 to -17</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.18-1.1">Changed all instances of "optional confidentiality" to
+          "opportunistic confidentiality" and all instances of
+          "required confidentiality" to "enforced confidentiality".
+          (issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/113">
+            #113</a>)<a href="#appendix-A.18-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.18-1.2">Added Section "6.7 Confidentiality Requirements"
+          (issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/113">
+            #113</a>)<a href="#appendix-A.18-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.18-1.3">Updated DKIM description to use a slight modification to
+          the first sentence of RFC 6376 Introduction (issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/138">
+            #138</a>).<a href="#appendix-A.18-1.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.19">
+        <h3 id="name-changes-from-draft-ietf-emailcore-a-10">
+<a href="#appendix-A.19" class="section-number selfRef">A.19. </a><a href="#name-changes-from-draft-ietf-emailcore-a-10" class="section-name selfRef">Changes from draft-ietf-emailcore-as-17 to -18</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.19-1.1">Added text clarifying that hop-by-hop confidentiality
+          does not guarantee end-to-end confidentiality.<a href="#appendix-A.19-1.1" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="appendix-A.20">
+        <h3 id="name-changes-from-draft-ietf-emailcore-a-11">
+<a href="#appendix-A.20" class="section-number selfRef">A.20. </a><a href="#name-changes-from-draft-ietf-emailcore-a-11" class="section-name selfRef">Changes from draft-ietf-emailcore-as-18 to -19</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.20-1.1">
+            Added text stating that STARTTLS is vulnerable to
+            man-in-middle-attacks (issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/134">
+            #134</a>)<a href="#appendix-A.20-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.20-1.2">
+            Rewrote opening paragraph of Opportunistic Confidentiality
+            based on Rob Sayre's suggestions (issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/135">
+            #135</a>)<a href="#appendix-A.20-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-A.20-1.3">
+            Rewrote text discussing use of email addresses in HTML
+            forms and provided a more restricted Mailbox ABNF (issue
+          <a href="https://github.com/ietf-wg-emailcore/emailcore/issues/137">
+            #137</a>)<a href="#appendix-A.20-1.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+</section>
+</div>
+<div id="authors-addresses">
+<section id="appendix-B">
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">John C Klensin (<span class="role">editor</span>)</span></div>
+<div dir="auto" class="left"><span class="street-address">1770 Massachusetts Ave, Ste 322</span></div>
+<div dir="auto" class="left">
+<span class="locality">Cambridge</span>, <span class="region">MA</span> <span class="postal-code">02140</span>
+</div>
+<div dir="auto" class="left"><span class="country-name">United States of America</span></div>
+<div class="tel">
+<span>Phone:</span>
+<a href="tel:+1%20617%20245%201457" class="tel">+1 617 245 1457</a>
+</div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:john-ietf@jck.com" class="email">john-ietf@jck.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Kenneth Murchison (<span class="role">editor</span>)</span></div>
+<div dir="auto" class="left"><span class="org">Fastmail US LLC</span></div>
+<div dir="auto" class="left"><span class="street-address">1429 Walnut Street - Suite 1201</span></div>
+<div dir="auto" class="left">
+<span class="locality">Philadelphia</span>, <span class="region">PA</span> <span class="postal-code">19102</span>
+</div>
+<div dir="auto" class="left"><span class="country-name">United States of America</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:murch@fastmailteam.com" class="email">murch@fastmailteam.com</a>
+</div>
+</address>
+</section>
+</div>
+<script>const toc = document.getElementById("toc");
+toc.querySelector("h2").addEventListener("click", e => {
+  toc.classList.toggle("active");
+});
+toc.querySelector("nav").addEventListener("click", e => {
+  toc.classList.remove("active");
+});
+</script>
+</body>
+</html>
