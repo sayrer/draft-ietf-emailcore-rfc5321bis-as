@@ -753,8 +753,7 @@ Internet-Draft               Core Email A/S                  August 2025
    Message-Level Confidentiality (Section 6.6) only cover the message
    body, and none of the headers.  It is difficult and perhaps
    undesirable to encrypt all message headers.  See the Privacy
-   Considerations in Section 11 of Header Protection for
-   Cryptographically Protected E-mail [I-D.ietf-lamps-header-protection]
+   Considerations in Section 11 of [I-D.ietf-lamps-header-protection]
    for an extended explanation.
 
 6.8.  Confidentiality Requirements
@@ -774,6 +773,7 @@ Internet-Draft               Core Email A/S                  August 2025
    private and Internet-connected networks.  Therefore, SMTP servers
    MUST be configurable to allow for receiving messages without
    confidentiality between servers in order to maximize interoperation.
+
 
 
 
