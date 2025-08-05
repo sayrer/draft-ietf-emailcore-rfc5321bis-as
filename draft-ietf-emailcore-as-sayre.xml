@@ -873,7 +873,7 @@
         only cover the message body, and none of the headers. It is difficult and
         perhaps undesirable to encrypt all message headers. See the Privacy
         Considerations in
-        <xref target="I-D.ietf-lamps-header-protection" section="11">
+        <xref target="I-D.ietf-lamps-header-protection" section="2.4" sectionFormat="of">
           Header Protection for
           Cryptographically Protected E-mail</xref> for an extended explanation.
         </t>
