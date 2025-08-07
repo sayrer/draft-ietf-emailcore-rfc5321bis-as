@@ -10,7 +10,7 @@ Expires: 8 February 2026                                        Fastmail
 
 
          Applicability Statement for IETF Core Email Protocols
-                       draft-ietf-emailcore-as-19
+                       draft-ietf-emailcore-as-20
 
 Abstract
 
