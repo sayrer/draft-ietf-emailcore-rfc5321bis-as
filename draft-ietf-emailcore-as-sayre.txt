@@ -145,6 +145,7 @@ Internet-Draft               Core Email A/S                  August 2025
      A.18. Changes from draft-ietf-emailcore-as-16 to -17  . . . . .  23
      A.19. Changes from draft-ietf-emailcore-as-17 to -18  . . . . .  23
      A.20. Changes from draft-ietf-emailcore-as-18 to -19  . . . . .  24
+     A.21. Changes from draft-ietf-emailcore-as-19 to -20  . . . . .  24
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  24
 
 1.  Introduction
@@ -161,7 +162,6 @@ Internet-Draft               Core Email A/S                  August 2025
    recommended, or to be avoided except in special cases.  Furthermore,
    this document discusses some common mechanisms for confidentiality
    and authentication in electronic mail.
-
 
 
 
@@ -1304,6 +1304,24 @@ A.20.  Changes from draft-ietf-emailcore-as-18 to -19
       provided a more restricted Mailbox ABNF (issue #137
       (https://github.com/ietf-wg-emailcore/emailcore/issues/137))
 
+A.21.  Changes from draft-ietf-emailcore-as-19 to -20
+
+   *  Updated stats regarding MX records on top-level domains.
+
+   *  Tweaked hop-by-hop confidentiality text again (Resnick).
+
+   *  Made clear that TLS authentication is optional (Resnick/Sayre).
+
+   *  Removed hop-by-hop paragraph in Opportunistic Confidentiality as
+      its now discussed in TLS section (Sayre).
+
+   *  Removed hop-by-hop paragraph in Enforced Confidentiality as its
+      now discussed in TLS section (Sayre).
+
+   *  Added reference to LAMPS in Message-Level Confidentiality (Sayre).
+
+   *  Miscellaneous editorial changes.
+
 Authors' Addresses
 
    John C Klensin (editor)
@@ -1320,24 +1338,6 @@ Authors' Addresses
    Philadelphia, PA 19102
    United States of America
    Email: murch@fastmailteam.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

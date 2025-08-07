@@ -1348,6 +1348,35 @@
           </li>
         </ul>
       </section>
+      <section numbered="true" toc="default">
+        <name>Changes from draft-ietf-emailcore-as-19 to -20</name>
+        <ul spacing="normal">
+          <li>
+            Updated stats regarding MX records on top-level domains.
+          </li>
+          <li>
+            Tweaked hop-by-hop confidentiality text again (Resnick).
+          </li>
+          <li>
+            Made clear that TLS authentication is optional (Resnick/Sayre).
+          </li>
+          <li>
+            Removed hop-by-hop paragraph in Opportunistic
+            Confidentiality as its now discussed in TLS section (Sayre).
+          </li>
+          <li>
+            Removed hop-by-hop paragraph in Enforced
+            Confidentiality as its now discussed in TLS section (Sayre).
+          </li>
+          <li>
+            Added reference to LAMPS in Message-Level Confidentiality
+            (Sayre).
+          </li>
+          <li>
+            Miscellaneous editorial changes.
+          </li>
+        </ul>
+      </section>
    </section>
   </back>
 </rfc>
