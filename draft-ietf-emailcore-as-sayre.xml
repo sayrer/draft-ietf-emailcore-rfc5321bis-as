@@ -703,10 +703,10 @@
             <li>Authentication is the process of establishing the identity of one
             or more of the endpoints of a communication channel. TLS can be
             used without authentication (as described in
-            <xref target="opp-tls" format="none">section 6.2</xref>).
+            <xref target="opp-tls" format="none">Section 6.2</xref>).
             When TLS does use authentication, it typically only authenticates
             the server side of the communication channel
-            (see <xref target="enforced-tls" format="none">section 6.3</xref>).</li>
+            (see <xref target="enforced-tls" format="none">Section 6.3</xref>).</li>
             <li>The term "confidentiality" describes a state where the
             data (i.e., the message) is transmitted in a way that it is
             only visible to the endpoints of a communication

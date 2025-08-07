@@ -580,9 +580,9 @@ Internet-Draft               Core Email A/S                  August 2025
 
    *  Authentication is the process of establishing the identity of one
       or more of the endpoints of a communication channel.  TLS can be
-      used without authentication (as described in section 6.2).  When
+      used without authentication (as described in Section 6.2).  When
       TLS does use authentication, it typically only authenticates the
-      server side of the communication channel (see section 6.3).
+      server side of the communication channel (see Section 6.3).
 
    *  The term "confidentiality" describes a state where the data (i.e.,
       the message) is transmitted in a way that it is only visible to
