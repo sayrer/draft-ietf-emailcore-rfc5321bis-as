@@ -5,8 +5,8 @@
 EMAILCORE                                              J.C. Klensin, Ed.
 Internet-Draft                                                          
 Intended status: Standards Track                       K. Murchison, Ed.
-Expires: 6 February 2026                                        Fastmail
-                                                           5 August 2025
+Expires: 8 February 2026                                        Fastmail
+                                                           7 August 2025
 
 
          Applicability Statement for IETF Core Email Protocols
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 February 2026.
+   This Internet-Draft will expire on 8 February 2026.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Klensin & Murchison      Expires 6 February 2026                [Page 1]
+Klensin & Murchison      Expires 8 February 2026                [Page 1]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Klensin & Murchison      Expires 6 February 2026                [Page 2]
+Klensin & Murchison      Expires 8 February 2026                [Page 2]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -165,7 +165,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026                [Page 3]
+Klensin & Murchison      Expires 8 February 2026                [Page 3]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -221,7 +221,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026                [Page 4]
+Klensin & Murchison      Expires 8 February 2026                [Page 4]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -235,7 +235,7 @@ Internet-Draft               Core Email A/S                  August 2025
    worked reliably.  A handful of country code TLDs have top level MX
    records but they have never been widely used nor well supported.  In
    2013 [RFC7085] found 18 TLDs with MX records, which dropped to 17 in
-   2021 despite many new TLDs having been added.
+   2021 and to 11 in 2025 despite many new TLDs having been added.
 
    Mail sent to addresses with single label domains has typically
    expected the address to be an abbreviation to be completed by a
@@ -277,7 +277,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026                [Page 5]
+Klensin & Murchison      Expires 8 February 2026                [Page 5]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -333,7 +333,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026                [Page 6]
+Klensin & Murchison      Expires 8 February 2026                [Page 6]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -389,7 +389,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026                [Page 7]
+Klensin & Murchison      Expires 8 February 2026                [Page 7]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -445,7 +445,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026                [Page 8]
+Klensin & Murchison      Expires 8 February 2026                [Page 8]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -486,13 +486,13 @@ Internet-Draft               Core Email A/S                  August 2025
    [I-D.ietf-emailcore-rfc5321bis].  Specifically, the HTML form
    grammar:
 
-   *  Does not supported quoted strings.
+   *  Does not support quoted strings.
 
    *  Only allows a limited set of characters in domains.
 
    *  Allows leading, trailing, or consecutive unquoted dots ('.') in
       the local-part of email addresses, although few mail systems
-      support them.  Consequently, implementations are discouraged from
+      support them.  Therefore, implementations are discouraged from
       accepting such addresses.
 
    *  As of the time this document was written, non-ASCII characters (as
@@ -501,13 +501,13 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026                [Page 9]
+Klensin & Murchison      Expires 8 February 2026                [Page 9]
 
 Internet-Draft               Core Email A/S                  August 2025
 
 
    Consequently, implementations that intend to accept email addresses
-   in HTML forms are encouraged to use at least the the following, more
+   in HTML forms are encouraged to support at least the following, more
    restricted 'Mailbox' grammar:
 
            Limited-Mailbox = Dot-string "@" Domain
@@ -557,7 +557,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 10]
+Klensin & Murchison      Expires 8 February 2026               [Page 10]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -581,7 +581,7 @@ Internet-Draft               Core Email A/S                  August 2025
    *  Authentication is the process of establishing the identity of one
       or more of the endpoints of a communication channel.  TLS can be
       used without authentication (as described in section 6.2).  When
-      it does use authentication, it typically only authenticates the
+      TLS does use authentication, it typically only authenticates the
       server side of the communication channel (see section 6.3).
 
    *  The term "confidentiality" describes a state where the data (i.e.,
@@ -613,7 +613,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 11]
+Klensin & Murchison      Expires 8 February 2026               [Page 11]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -669,7 +669,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 12]
+Klensin & Murchison      Expires 8 February 2026               [Page 12]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -725,7 +725,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 13]
+Klensin & Murchison      Expires 8 February 2026               [Page 13]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -781,7 +781,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 14]
+Klensin & Murchison      Expires 8 February 2026               [Page 14]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -837,7 +837,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 15]
+Klensin & Murchison      Expires 8 February 2026               [Page 15]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -893,7 +893,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 16]
+Klensin & Murchison      Expires 8 February 2026               [Page 16]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -949,7 +949,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 17]
+Klensin & Murchison      Expires 8 February 2026               [Page 17]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -1005,7 +1005,7 @@ Internet-Draft               Core Email A/S                  August 2025
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 18]
+Klensin & Murchison      Expires 8 February 2026               [Page 18]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -1061,7 +1061,7 @@ A.2.  Changes from draft-ietf-emailcore-as-00 (2020-10-06) to -01
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 19]
+Klensin & Murchison      Expires 8 February 2026               [Page 19]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -1117,7 +1117,7 @@ A.7.  Changes from draft-ietf-emailcore-as-05 (2022-10-24) to -06
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 20]
+Klensin & Murchison      Expires 8 February 2026               [Page 20]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -1173,7 +1173,7 @@ A.11.  Changes from draft-ietf-emailcore-as-09 (2024-07-02) to -10
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 21]
+Klensin & Murchison      Expires 8 February 2026               [Page 21]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -1229,7 +1229,7 @@ A.15.  Changes from draft-ietf-emailcore-as-13 (2025-01-30) to -14
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 22]
+Klensin & Murchison      Expires 8 February 2026               [Page 22]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -1285,7 +1285,7 @@ A.19.  Changes from draft-ietf-emailcore-as-17 to -18
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 23]
+Klensin & Murchison      Expires 8 February 2026               [Page 23]
 
 Internet-Draft               Core Email A/S                  August 2025
 
@@ -1341,4 +1341,4 @@ Authors' Addresses
 
 
 
-Klensin & Murchison      Expires 6 February 2026               [Page 24]
+Klensin & Murchison      Expires 8 February 2026               [Page 24]
