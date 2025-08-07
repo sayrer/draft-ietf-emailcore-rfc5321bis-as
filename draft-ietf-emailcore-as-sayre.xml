@@ -281,8 +281,8 @@
           A handful of country code TLDs have top level MX records but
           they have never been widely used nor
           well supported. In 2013 <xref target="RFC7085"/> found 18
-          TLDs with MX records, which dropped to 17 in 2021 despite
-          many new TLDs having been added. </t>
+          TLDs with MX records, which dropped to 17 in 2021 and to 11 in
+          2025 despite many new TLDs having been added. </t>
         <t> Mail sent to addresses with single label domains has
           typically expected the address to be an abbreviation to be
           completed by a search list, so mail to bob@sales would be
@@ -594,11 +594,11 @@
         Specifically, the HTML form grammar:</t>
 
         <ul spacing="normal">
-          <li>Does not supported quoted strings.</li>
+          <li>Does not support quoted strings.</li>
           <li>Only allows a limited set of characters in domains.</li>
           <li>Allows leading, trailing, or consecutive unquoted dots
           ('.') in the local-part of email addresses, although few
-          mail systems support them. Consequently, implementations are
+          mail systems support them. Therefore, implementations are
           discouraged from accepting such addresses.</li>
           <li>As of the time this document was written, non-ASCII characters
 	  (as discussed in <xref target="non-ascii"/> above) were also
@@ -606,7 +606,7 @@
         </ul>
 
         <t>Consequently, implementations that intend to accept email
-        addresses in HTML forms are encouraged to use at least the the
+        addresses in HTML forms are encouraged to support at least the
         following, more restricted 'Mailbox' grammar:</t>
 
         <artwork name="" type="" align="left" alt=""><![CDATA[
@@ -704,7 +704,7 @@
             or more of the endpoints of a communication channel. TLS can be
             used without authentication (as described in
             <xref target="opp-tls" format="none">section 6.2</xref>).
-            When it does use authentication, it typically only authenticates
+            When TLS does use authentication, it typically only authenticates
             the server side of the communication channel
             (see <xref target="enforced-tls" format="none">section 6.3</xref>).</li>
             <li>The term "confidentiality" describes a state where the
