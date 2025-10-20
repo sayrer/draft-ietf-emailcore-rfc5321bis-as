@@ -18,6 +18,8 @@ Abstract
    formats have evolved slowly over the years.  This Applicability
    Statement describes interaction with newer protocols.
 
+   [Provided as a diff to the WG document]
+
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
@@ -51,8 +53,6 @@ Copyright Notice
 
 
 
-
-
 Sayre                     Expires 23 April 2026                 [Page 1]
 
 Internet-Draft               Core Email A/S                 October 2025
@@ -61,51 +61,51 @@ Internet-Draft               Core Email A/S                 October 2025
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
-   2.  Applicability of Some SMTP Provisions . . . . . . . . . . . .   3
+     1.1.  Conventions Used in This Document . . . . . . . . . . . .   4
+   2.  Applicability of Some SMTP Provisions . . . . . . . . . . . .   4
      2.1.  Handling of the Domain Argument to the EHLO Command . . .   4
      2.2.  Address Literals  . . . . . . . . . . . . . . . . . . . .   4
      2.3.  Addresses in Top-Level Domains  . . . . . . . . . . . . .   4
-     2.4.  SMTP Extensions . . . . . . . . . . . . . . . . . . . . .   4
+     2.4.  SMTP Extensions . . . . . . . . . . . . . . . . . . . . .   5
    3.  Internet Message Format Provisions  . . . . . . . . . . . . .   5
-     3.1.  Empty Quoted Strings  . . . . . . . . . . . . . . . . . .   5
+     3.1.  Empty Quoted Strings  . . . . . . . . . . . . . . . . . .   6
      3.2.  Received Header Fields  . . . . . . . . . . . . . . . . .   6
        3.2.1.  Generation  . . . . . . . . . . . . . . . . . . . . .   6
-       3.2.2.  Consumption . . . . . . . . . . . . . . . . . . . . .   6
-   4.  Group Syntax  . . . . . . . . . . . . . . . . . . . . . . . .   6
-   5.  Email Addresses . . . . . . . . . . . . . . . . . . . . . . .   7
-     5.1.  Case-Sensitivity, Delimiters, and Mailbox Equivalency . .   7
-     5.2.  Non-ASCII Characters  . . . . . . . . . . . . . . . . . .   7
-     5.3.  HTML  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
-     5.4.  Use and Validation of Email Address Syntax  . . . . . . .   8
-   6.  Use of Multipurpose Internet Mail Extensions (MIME) . . . . .   9
-   7.  Confidentiality and Authentication with SMTP  . . . . . . . .  10
-     7.1.  Security at the Transport Layer . . . . . . . . . . . . .  10
-       7.1.1.  The TLS Protocol  . . . . . . . . . . . . . . . . . .  11
-       7.1.2.  Opportunistic Confidentiality . . . . . . . . . . . .  11
-       7.1.3.  Enforced Confidentiality, with Receiving Server
+       3.2.2.  Consumption . . . . . . . . . . . . . . . . . . . . .   7
+     3.3.  Group Syntax  . . . . . . . . . . . . . . . . . . . . . .   7
+   4.  Email Addresses . . . . . . . . . . . . . . . . . . . . . . .   7
+     4.1.  Case-Sensitivity, Delimiters, and Mailbox Equivalency . .   7
+     4.2.  Non-ASCII Characters  . . . . . . . . . . . . . . . . . .   8
+     4.3.  HTML  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     4.4.  Use and Validation of Email Address Syntax  . . . . . . .   8
+   5.  Use of Multipurpose Internet Mail Extensions (MIME) . . . . .  10
+   6.  Confidentiality and Authentication with SMTP  . . . . . . . .  10
+     6.1.  Security at the Transport Layer . . . . . . . . . . . . .  11
+       6.1.1.  The TLS Protocol  . . . . . . . . . . . . . . . . . .  11
+       6.1.2.  Opportunistic Confidentiality . . . . . . . . . . . .  11
+       6.1.3.  Enforced Confidentiality, with Receiving Server
                Authentication  . . . . . . . . . . . . . . . . . . .  12
-     7.2.  Message-Level Authentication  . . . . . . . . . . . . . .  12
-     7.3.  SMTP Authentication . . . . . . . . . . . . . . . . . . .  13
-     7.4.  Message-Level Confidentiality . . . . . . . . . . . . . .  13
-     7.5.  Confidentiality Requirements  . . . . . . . . . . . . . .  13
-   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  14
-   9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
-   10. Security Considerations . . . . . . . . . . . . . . . . . . .  14
-   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  14
-     11.1.  Normative References . . . . . . . . . . . . . . . . . .  14
-     11.2.  Informative References . . . . . . . . . . . . . . . . .  15
+     6.2.  Message-Level Authentication  . . . . . . . . . . . . . .  12
+     6.3.  SMTP Authentication . . . . . . . . . . . . . . . . . . .  13
+     6.4.  Message-Level Confidentiality . . . . . . . . . . . . . .  13
+     6.5.  Confidentiality Requirements  . . . . . . . . . . . . . .  14
+   7.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  14
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  15
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  15
    Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  19
      A.1.  Changes from draft-klensin-email-core-as-00 (2020-03-30) to
             draft-ietf-emailcore-as-00 . . . . . . . . . . . . . . .  19
      A.2.  Changes from draft-ietf-emailcore-as-00 (2020-10-06) to
-            -01  . . . . . . . . . . . . . . . . . . . . . . . . . .  19
+            -01  . . . . . . . . . . . . . . . . . . . . . . . . . .  20
      A.3.  Changes from draft-ietf-emailcore-as-01 (2021-04-09) to
-            -02  . . . . . . . . . . . . . . . . . . . . . . . . . .  19
+            -02  . . . . . . . . . . . . . . . . . . . . . . . . . .  20
      A.4.  Changes from draft-ietf-emailcore-as-02 (2021-08-06) to
             -03  . . . . . . . . . . . . . . . . . . . . . . . . . .  20
      A.5.  Changes from draft-ietf-emailcore-as-03 (2022-01-31) to
             -04  . . . . . . . . . . . . . . . . . . . . . . . . . .  20
-
 
 
 
@@ -117,7 +117,7 @@ Internet-Draft               Core Email A/S                 October 2025
      A.6.  Changes from draft-ietf-emailcore-as-04 (2022-05-21) to
             -05  . . . . . . . . . . . . . . . . . . . . . . . . . .  20
      A.7.  Changes from draft-ietf-emailcore-as-05 (2022-10-24) to
-            -06  . . . . . . . . . . . . . . . . . . . . . . . . . .  20
+            -06  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
      A.8.  Changes from draft-ietf-emailcore-as-06 (2022-11-07) to
             -07  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
      A.9.  Changes from draft-ietf-emailcore-as-07 (2023-03-13) to
@@ -127,24 +127,24 @@ Internet-Draft               Core Email A/S                 October 2025
      A.11. Changes from draft-ietf-emailcore-as-09 (2024-07-02) to
             -10  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
      A.12. Changes from draft-ietf-emailcore-as-10 (2024-07-03) to
-            -11  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
+            -11  . . . . . . . . . . . . . . . . . . . . . . . . . .  22
      A.13. Changes from draft-ietf-emailcore-as-11 (2024-10-21) to
             -12  . . . . . . . . . . . . . . . . . . . . . . . . . .  22
      A.14. Changes from draft-ietf-emailcore-as-12 (2024-11-09) to
             -13  . . . . . . . . . . . . . . . . . . . . . . . . . .  22
      A.15. Changes from draft-ietf-emailcore-as-13 (2025-01-30) to
-            -14  . . . . . . . . . . . . . . . . . . . . . . . . . .  22
+            -14  . . . . . . . . . . . . . . . . . . . . . . . . . .  23
      A.16. Changes from draft-ietf-emailcore-as-14 (2025-02-27) to
-            -15  . . . . . . . . . . . . . . . . . . . . . . . . . .  22
+            -15  . . . . . . . . . . . . . . . . . . . . . . . . . .  23
      A.17. Changes from draft-ietf-emailcore-as-15 (2025-03-18) to
-            -16  . . . . . . . . . . . . . . . . . . . . . . . . . .  22
+            -16  . . . . . . . . . . . . . . . . . . . . . . . . . .  23
      A.18. Changes from draft-ietf-emailcore-as-16 to -17  . . . . .  23
      A.19. Changes from draft-ietf-emailcore-as-17 to -18  . . . . .  23
-     A.20. Changes from draft-ietf-emailcore-as-18 to -19  . . . . .  23
+     A.20. Changes from draft-ietf-emailcore-as-18 to -19  . . . . .  24
      A.21. Changes from draft-ietf-emailcore-as-19 to -20  . . . . .  24
      A.22. Changes from draft-ietf-emailcore-as-20 to -21  . . . . .  24
      A.23. Changes from draft-ietf-emailcore-as-21 to -22  . . . . .  24
-     A.24. Changes from draft-ietf-emailcore-as-22 to -23  . . . . .  24
+     A.24. Changes from draft-ietf-emailcore-as-22 to -23  . . . . .  25
      A.25. Changes from draft-ietf-emailcore-as-23 to -24  . . . . .  25
      A.26. Changes from draft-ietf-emailcore-as-24 to -25  . . . . .  25
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  25
@@ -157,11 +157,11 @@ Internet-Draft               Core Email A/S                 October 2025
    [I-D.ietf-emailcore-rfc5321bis] and the Internet Message Format (IMF)
    [I-D.ietf-emailcore-rfc5322bis],
 
-2.  Applicability of Some SMTP Provisions
 
-   Since[RFC5321] was published in October 2008, usage of SMTP has
-   evolved.  Networks are faster, surveillance has increased, spam is
-   more frequent, and internationalization expectations are higher.
+
+
+
+
 
 
 
@@ -169,6 +169,20 @@ Sayre                     Expires 23 April 2026                 [Page 3]
 
 Internet-Draft               Core Email A/S                 October 2025
 
+
+1.1.  Conventions Used in This Document
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in BCP
+   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+2.  Applicability of Some SMTP Provisions
+
+   Since[RFC5321] was published in October 2008, usage of SMTP has
+   evolved.  Networks are faster, surveillance has increased, spam is
+   more frequent, and internationalization expectations are higher.
 
    This section describes new options and protocols to help with these
    new issues.
@@ -204,6 +218,14 @@ Internet-Draft               Core Email A/S                 October 2025
    expected the address to be an abbreviation to be completed by a
    search list, so mail to bob@sales would be completed to
    bob@sales.example.com.  This shortcut has led to unfortunate
+
+
+
+Sayre                     Expires 23 April 2026                 [Page 4]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    consequences; in one famous case, in 1991 when the .CS domain was
    added to the root, mail in computer science departments started to
    fail as mail to bob@cs was now treated as mail to Czechoslovakia.
@@ -216,15 +238,7 @@ Internet-Draft               Core Email A/S                 October 2025
    supported by SMTP senders and receivers:
 
    *  Secure SMTP over Transport Layer Security [RFC3207] (Cf.
-      discussion in Section 7.1.)
-
-
-
-
-Sayre                     Expires 23 April 2026                 [Page 4]
-
-Internet-Draft               Core Email A/S                 October 2025
-
+      discussion in Section 6.1.)
 
    *  8-bit MIME [RFC6152]
 
@@ -255,6 +269,19 @@ Internet-Draft               Core Email A/S                 October 2025
 
 3.  Internet Message Format Provisions
 
+
+
+
+
+
+
+
+
+Sayre                     Expires 23 April 2026                 [Page 5]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
 3.1.  Empty Quoted Strings
 
    The quoted-string ABNF non-terminal appears in the
@@ -274,13 +301,6 @@ Internet-Draft               Core Email A/S                 October 2025
       To: foo.""@example.net
 
       Cc: ""@example.com
-
-
-
-Sayre                     Expires 23 April 2026                 [Page 5]
-
-Internet-Draft               Core Email A/S                 October 2025
-
 
    Use of empty quoted strings is fine in "display-name".  For example,
    the following email header field is interoperable:
@@ -306,6 +326,18 @@ Internet-Draft               Core Email A/S                 October 2025
    another recipient.  That may allow someone to infer that a "blind"
    copy is involved.
 
+
+
+
+
+
+
+
+Sayre                     Expires 23 April 2026                 [Page 6]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
 3.2.2.  Consumption
 
    Received header fields support analysis of handling and delivery
@@ -321,7 +353,7 @@ Internet-Draft               Core Email A/S                 October 2025
    specifications [I-D.ietf-emailcore-rfc5321bis]
    [I-D.ietf-emailcore-rfc5322bis].
 
-4.  Group Syntax
+3.3.  Group Syntax
 
    "Group" syntax [I-D.ietf-emailcore-rfc5322bis] [RFC6854] has been a
    long-standing construct in the specification, going back to RFC 822
@@ -329,18 +361,9 @@ Internet-Draft               Core Email A/S                 October 2025
    therefore possible that use of it in a message will conform with the
    specifications but not be supported by some implementations.
 
+4.  Email Addresses
 
-
-
-
-Sayre                     Expires 23 April 2026                 [Page 6]
-
-Internet-Draft               Core Email A/S                 October 2025
-
-
-5.  Email Addresses
-
-5.1.  Case-Sensitivity, Delimiters, and Mailbox Equivalency
+4.1.  Case-Sensitivity, Delimiters, and Mailbox Equivalency
 
    SMTP specifies that the local-part of an email address is case-
    sensitive (see Section 2.4 of [I-D.ietf-emailcore-rfc5321bis]).
@@ -363,13 +386,21 @@ Internet-Draft               Core Email A/S                 October 2025
    such as '+' and '.' in the local-part of an address.  Some systems
    make distinctions between "smith" and "smith+foo", or "jane.doe" and
    "janedoe", while others treat them as referring to the same mailboxes
+
+
+
+Sayre                     Expires 23 April 2026                 [Page 7]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    respectively.  Since only the final delivery system can properly
    interpret the local-part of an address, originating and transit/relay
    mail systems are discouraged from making any assumptions as to
    address equivalency or from making any changes to a local-part
    containing such a delimiter.
 
-5.2.  Non-ASCII Characters
+4.2.  Non-ASCII Characters
 
    Proper generation and transmission of email addresses containing non-
    ASCII characters is discussed in the SMTPUTF8 documents [SMTPUTF8].
@@ -385,23 +416,14 @@ Internet-Draft               Core Email A/S                 October 2025
       Punycode Conversion (see Section 4.4 of [RFC5891]) on the local-
       part of an address
 
-
-
-
-
-Sayre                     Expires 23 April 2026                 [Page 7]
-
-Internet-Draft               Core Email A/S                 October 2025
-
-
    These encodings might not produce an address that is guaranteed to be
    treated as equivalent to the original one.  See Section 8 of
    [RFC6530] for further discussion.
 
-5.3.  HTML
+4.3.  HTML
 
 
-5.4.  Use and Validation of Email Address Syntax
+4.4.  Use and Validation of Email Address Syntax
 
    Email addresses are frequently used as input to, or validated by,
    forms managed by various libraries, some tied to Versions of
@@ -421,6 +443,13 @@ Internet-Draft               Core Email A/S                 October 2025
 
    *  Absence of support for quoted strings.
 
+
+
+Sayre                     Expires 23 April 2026                 [Page 8]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    *  Even when restricted to the ASCII charset, some systems have a
       restricted character repertoire as compared to the applicable
       standards.  For domain names, only a limited set of characters
@@ -436,20 +465,12 @@ Internet-Draft               Core Email A/S                 October 2025
       that flexibility is NOT RECOMMENDED.
 
    *  As of the time this document was written, many systems still do
-      not allow non-ASCII characters (as discussed in Section 5.2 above)
+      not allow non-ASCII characters (as discussed in Section 4.2 above)
       in either the local-part or the domain-part of an email address.
 
    *  Additionally, some mail systems allow a trailing dot ('.') in the
       domain part of email addresses (as allowed as a notation by the
       basic Domain Names specification [RFC1035] but prohibited by
-
-
-
-Sayre                     Expires 23 April 2026                 [Page 8]
-
-Internet-Draft               Core Email A/S                 October 2025
-
-
       [I-D.ietf-emailcore-rfc5321bis]), and is hence not interoperable
       with all systems.  Consequently, implementations are encouraged to
       strip any trailing dots that might appear in the domain part of
@@ -477,12 +498,20 @@ Internet-Draft               Core Email A/S                 October 2025
    tools with their own, more restrictive, rules should use care to
    consider both current and past versions of syntax specifications for
    those mechanisms in their decisions, weighing them against local
+
+
+
+Sayre                     Expires 23 April 2026                 [Page 9]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    needs and other restrictions.  Where those other rules allow syntax
    variations that the IETF specifications cited above do not, those
    variations should be avoided because they are unlikely to be accepted
    across the Internet email environment.
 
-6.  Use of Multipurpose Internet Mail Extensions (MIME)
+5.  Use of Multipurpose Internet Mail Extensions (MIME)
 
    Although the Multipurpose Internet Mail Extensions (MIME) [RFC2045]
    specification and its predecessors and updates have remained separate
@@ -493,20 +522,7 @@ Internet-Draft               Core Email A/S                 October 2025
    bodies have become nearly ubiquitous in contemporary email.  As a
    result, IMF generators and parsers are expected to support MIME.
 
-
-
-
-
-
-
-
-
-Sayre                     Expires 23 April 2026                 [Page 9]
-
-Internet-Draft               Core Email A/S                 October 2025
-
-
-7.  Confidentiality and Authentication with SMTP
+6.  Confidentiality and Authentication with SMTP
 
    SMTP is specified without embedded mechanisms for authentication or
    confidentiality; its traffic is therefore "in the clear".  Years of
@@ -538,7 +554,15 @@ Internet-Draft               Core Email A/S                 October 2025
    The following sections discuss these facilities and their most common
    uses.
 
-7.1.  Security at the Transport Layer
+
+
+
+Sayre                     Expires 23 April 2026                [Page 10]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
+6.1.  Security at the Transport Layer
 
    The Internet email environment has evolved over the years so that the
    SMTP protocol itself can be used in conjunction with Transport Layer
@@ -550,24 +574,12 @@ Internet-Draft               Core Email A/S                 October 2025
    we will borrow directly from the TLS specification [RFC8446]
    (although the pointers to other sections given are to this document).
 
-
-
-
-
-
-
-
-Sayre                     Expires 23 April 2026                [Page 10]
-
-Internet-Draft               Core Email A/S                 October 2025
-
-
    *  Authentication is the process of establishing the identity of one
       or more of the endpoints of a communication channel.  TLS can be
-      used without authentication (as described in Section 7.1.2), but
+      used without authentication (as described in Section 6.1.2), but
       even when it does use authentication, it typically only
       authenticates the server side of the communication channel (see
-      Section 7.1.3).
+      Section 6.1.3).
 
    *  The term "confidentiality" describes a state where the data (i.e.,
       the message) is transmitted in a way that it is only visible to
@@ -579,7 +591,7 @@ Internet-Draft               Core Email A/S                 October 2025
    confidentiality is achieved with SMTP, but that does not mean that
    other methods might not be used or future ones developed.
 
-7.1.1.  The TLS Protocol
+6.1.1.  The TLS Protocol
 
    The TLS Protocol [RFC8446] provides confidentiality while the message
    is in transit from an SMTP client to the next SMTP server.  Both
@@ -590,7 +602,7 @@ Internet-Draft               Core Email A/S                 October 2025
    servers, each intermediate server will typically store the message in
    plain text and hence have access to that plain text of the message.
 
-7.1.2.  Opportunistic Confidentiality
+6.1.2.  Opportunistic Confidentiality
 
    The most common implementation of message confidentiality is known as
    "opportunistic TLS", which is frequently referred to as
@@ -598,6 +610,14 @@ Internet-Draft               Core Email A/S                 October 2025
    announces in its greeting that it is capable of supporting TLS
    encryption through the presence of the "STARTTLS" keyword.  The
    sending client then attempts to negotiate an encrypted connection,
+
+
+
+Sayre                     Expires 23 April 2026                [Page 11]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    and if successful, transmits the message in encrypted form; if
    negotiation fails, the client falls back to sending the message in
    clear text.
@@ -611,18 +631,11 @@ Internet-Draft               Core Email A/S                 October 2025
    vast majority of email traffic is encrypted during its time
    transiting from the client to the next server.
 
-
-
-Sayre                     Expires 23 April 2026                [Page 11]
-
-Internet-Draft               Core Email A/S                 October 2025
-
-
    Note that opportunistic TLS via the STARTTLS [RFC3207] extension is
    vulnerable to man-in-the-middle attacks.  Enforced confidentiality
-   (Section 7.1.3) can be used to mitigate these attacks.
+   (Section 6.1.3) can be used to mitigate these attacks.
 
-7.1.3.  Enforced Confidentiality, with Receiving Server Authentication
+6.1.3.  Enforced Confidentiality, with Receiving Server Authentication
 
    Two protocols exist that move message confidentiality from
    opportunistic to enforced (with conditions as noted below) - MTA-STS
@@ -642,7 +655,7 @@ Internet-Draft               Core Email A/S                 October 2025
    the protocol requested by the receiving server, the sending client
    will use Opportunistic TLS or clear-text to transmit the message.
 
-7.2.  Message-Level Authentication
+6.2.  Message-Level Authentication
 
    Protocols exist to allow for authentication of different identities
    associated with an email message:
@@ -653,6 +666,13 @@ Internet-Draft               Core Email A/S                 October 2025
    *  DKIM [RFC6376] permits a person, role, or organization to claim
       some responsibility for an email message by associating a domain
       name [RFC1034] with the message, which they are authorized to use.
+
+
+
+Sayre                     Expires 23 April 2026                [Page 12]
+
+Internet-Draft               Core Email A/S                 October 2025
+
 
    *  DMARC [RFC7489] relies on SPF and DKIM to allow for validation of
       the domain in the visible From header.
@@ -666,20 +686,12 @@ Internet-Draft               Core Email A/S                 October 2025
       method to verify that an email message was actually sent by the
       entity claiming to be the sender.
 
-
-
-
-Sayre                     Expires 23 April 2026                [Page 12]
-
-Internet-Draft               Core Email A/S                 October 2025
-
-
    All of these are outside the scope of this document, as they are
    outside the scope of SMTP.  All of them are, to greater or lesser
    degrees, subject to risks of compromise on systems processing
    messages between transport links as discussed above.
 
-7.3.  SMTP Authentication
+6.3.  SMTP Authentication
 
    SMTP Authentication [RFC4954], which is often abbreviated as SMTP
    AUTH, is an extension to SMTP.  While its name might suggest that it
@@ -698,7 +710,7 @@ Internet-Draft               Core Email A/S                 October 2025
    commands as described in Section 7.3 of
    [I-D.ietf-emailcore-rfc5321bis].
 
-7.4.  Message-Level Confidentiality
+6.4.  Message-Level Confidentiality
 
    Protocols such as S/MIME [RFC8551] and OpenPGP [RFC9580] exist to
    allow for message confidentiality outside of the operation of SMTP.
@@ -709,10 +721,19 @@ Internet-Draft               Core Email A/S                 October 2025
    OpenPGP, too many to list here.  As both operate fully independent of
    SMTP, a more detailed discussion is out of scope for this document.
 
+
+
+
+
+Sayre                     Expires 23 April 2026                [Page 13]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    Header Protection for Cryptographically Protected E-mail [RFC9788]
    extends S/MIME such that some message headers can be encrypted.
 
-7.5.  Confidentiality Requirements
+6.5.  Confidentiality Requirements
 
    The vast majority of email sent on the Internet at present does not
    use message-level confidentiality.  It has been recognized that
@@ -722,14 +743,6 @@ Internet-Draft               Core Email A/S                 October 2025
    these risks, opportunistic confidentiality is now widely implemented
    and used in Internet email, and some deployment and use of enforced
    confidentiality is also now seen.  Therefore, confidentiality (for
-
-
-
-Sayre                     Expires 23 April 2026                [Page 13]
-
-Internet-Draft               Core Email A/S                 October 2025
-
-
    example, the STARTTLS extension) MUST be implemented by SMTP servers
    in order to at least provide over-the-wire confidentiality during an
    individual SMTP exchange.  That said, there are many legacy
@@ -740,7 +753,7 @@ Internet-Draft               Core Email A/S                 October 2025
    for receiving messages without confidentiality between servers in
    order to maximize interoperation.
 
-8.  Acknowledgments
+7.  Acknowledgments
 
    The Emailcore group arose out of discussions on the ietf-smtp group
    over changes and additions that should be made to the core email
@@ -752,7 +765,7 @@ Internet-Draft               Core Email A/S                 October 2025
    text for this document: Dave Crocker, Todd Herr, Tero Kivinen, Barry
    Leiba, John Levine, Alexey Melnikov, Pete Resnick, and E.  Sam.
 
-9.  IANA Considerations
+8.  IANA Considerations
 
    This memo includes no requests to or actions for IANA.  The IANA
    registries associated with the protocol specifications they reference
@@ -761,7 +774,19 @@ Internet-Draft               Core Email A/S                 October 2025
    updating the email registries begun in
    [I-D.ietf-emailcore-rfc5321bis] is under development.
 
-10.  Security Considerations
+
+
+
+
+
+
+
+Sayre                     Expires 23 April 2026                [Page 14]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
+9.  Security Considerations
 
    Security and privacy considerations are discussed throughout this
    document as they pertain to the referenced specifications.  Special
@@ -773,18 +798,9 @@ Internet-Draft               Core Email A/S                 October 2025
    those links, the security of the mechanisms depends on trust in those
    intermediate endpoints.
 
-11.  References
+10.  References
 
-11.1.  Normative References
-
-
-
-
-
-Sayre                     Expires 23 April 2026                [Page 14]
-
-Internet-Draft               Core Email A/S                 October 2025
-
+10.1.  Normative References
 
    [RFC2026]  Bradner, S., "The Internet Standards Process -- Revision
               3", BCP 9, RFC 2026, DOI 10.17487/RFC2026, October 1996,
@@ -804,7 +820,7 @@ Internet-Draft               Core Email A/S                 October 2025
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-11.2.  Informative References
+10.2.  Informative References
 
    [I-D.ietf-emailcore-rfc5321bis]
               Klensin, J. C., "Simple Mail Transfer Protocol", Work in
@@ -817,6 +833,14 @@ Internet-Draft               Core Email A/S                 October 2025
               Internet-Draft, draft-ietf-emailcore-rfc5322bis-12, 13
               June 2024, <https://datatracker.ietf.org/doc/html/draft-
               ietf-emailcore-rfc5322bis-12>.
+
+
+
+
+Sayre                     Expires 23 April 2026                [Page 15]
+
+Internet-Draft               Core Email A/S                 October 2025
+
 
    [IDNA2008] Klensin, J., "Internationalized Domain Names for
               Applications (IDNA): Definitions and Document Framework",
@@ -832,15 +856,6 @@ Internet-Draft               Core Email A/S                 October 2025
               Internationalized Domain Names for Applications (IDNA)",
               RFC 5892, DOI 10.17487/RFC5892, August 2010,
               <https://www.rfc-editor.org/info/rfc5892>.
-
-
-
-
-
-Sayre                     Expires 23 April 2026                [Page 15]
-
-Internet-Draft               Core Email A/S                 October 2025
-
 
               Alvestrand, H., Ed. and C. Karp, "Right-to-Left Scripts
               for Internationalized Domain Names for Applications
@@ -873,6 +888,16 @@ Internet-Draft               Core Email A/S                 October 2025
               Pipelining", STD 60, RFC 2920, DOI 10.17487/RFC2920,
               September 2000, <https://www.rfc-editor.org/info/rfc2920>.
 
+
+
+
+
+
+Sayre                     Expires 23 April 2026                [Page 16]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    [RFC3207]  Hoffman, P., "SMTP Service Extension for Secure SMTP over
               Transport Layer Security", RFC 3207, DOI 10.17487/RFC3207,
               February 2002, <https://www.rfc-editor.org/info/rfc3207>.
@@ -890,13 +915,6 @@ Internet-Draft               Core Email A/S                 October 2025
    [RFC3463]  Vaudreuil, G., "Enhanced Mail System Status Codes",
               RFC 3463, DOI 10.17487/RFC3463, January 2003,
               <https://www.rfc-editor.org/info/rfc3463>.
-
-
-
-Sayre                     Expires 23 April 2026                [Page 16]
-
-Internet-Draft               Core Email A/S                 October 2025
-
 
    [RFC3464]  Moore, K. and G. Vaudreuil, "An Extensible Message Format
               for Delivery Status Notifications", RFC 3464,
@@ -927,6 +945,15 @@ Internet-Draft               Core Email A/S                 October 2025
               RFC 6152, DOI 10.17487/RFC6152, March 2011,
               <https://www.rfc-editor.org/info/rfc6152>.
 
+
+
+
+
+Sayre                     Expires 23 April 2026                [Page 17]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    [RFC6376]  Crocker, D., Ed., Hansen, T., Ed., and M. Kucherawy, Ed.,
               "DomainKeys Identified Mail (DKIM) Signatures", STD 76,
               RFC 6376, DOI 10.17487/RFC6376, September 2011,
@@ -946,13 +973,6 @@ Internet-Draft               Core Email A/S                 October 2025
               Group Syntax in the "From:" and "Sender:" Header Fields",
               RFC 6854, DOI 10.17487/RFC6854, March 2013,
               <https://www.rfc-editor.org/info/rfc6854>.
-
-
-
-Sayre                     Expires 23 April 2026                [Page 17]
-
-Internet-Draft               Core Email A/S                 October 2025
-
 
    [RFC7085]  Levine, J. and P. Hoffman, "Top-Level Domains That Are
               Already Dotless", RFC 7085, DOI 10.17487/RFC7085, December
@@ -982,6 +1002,14 @@ Internet-Draft               Core Email A/S                 October 2025
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
               <https://www.rfc-editor.org/info/rfc8446>.
 
+
+
+
+Sayre                     Expires 23 April 2026                [Page 18]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    [RFC8461]  Margolis, D., Risher, M., Ramakrishnan, B., Brotman, A.,
               and J. Jones, "SMTP MTA Strict Transport Security (MTA-
               STS)", RFC 8461, DOI 10.17487/RFC8461, September 2018,
@@ -1000,15 +1028,6 @@ Internet-Draft               Core Email A/S                 October 2025
    [RFC9580]  Wouters, P., Ed., Huigens, D., Winter, J., and Y. Niibe,
               "OpenPGP", RFC 9580, DOI 10.17487/RFC9580, July 2024,
               <https://www.rfc-editor.org/info/rfc9580>.
-
-
-
-
-
-Sayre                     Expires 23 April 2026                [Page 18]
-
-Internet-Draft               Core Email A/S                 October 2025
-
 
    [RFC9788]  Gillmor, D. K., Hoeneisen, B., and A. Melnikov, "Header
               Protection for Cryptographically Protected Email",
@@ -1039,6 +1058,14 @@ Appendix A.  Change Log
 A.1.  Changes from draft-klensin-email-core-as-00 (2020-03-30) to draft-
       ietf-emailcore-as-00
 
+
+
+
+Sayre                     Expires 23 April 2026                [Page 19]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    *  Change of filename, metadata, and date to reflect transition to WG
       document for new emailcore WG.  No other substantive changes
 
@@ -1058,13 +1085,6 @@ A.3.  Changes from draft-ietf-emailcore-as-01 (2021-04-09) to -02
 
    *  Added new editors and also added some issues the emailcore group
       will be dealing with.
-
-
-
-Sayre                     Expires 23 April 2026                [Page 19]
-
-Internet-Draft               Core Email A/S                 October 2025
-
 
    *  Added reference to RFC 6648.
 
@@ -1093,6 +1113,15 @@ A.6.  Changes from draft-ietf-emailcore-as-04 (2022-05-21) to -05
    *  Added text addressing confidentiality and authentication (issue
       #54).
 
+
+
+
+
+Sayre                     Expires 23 April 2026                [Page 20]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
 A.7.  Changes from draft-ietf-emailcore-as-05 (2022-10-24) to -06
 
    *  Converted source to xml2rfc v3.
@@ -1112,15 +1141,6 @@ A.7.  Changes from draft-ietf-emailcore-as-05 (2022-10-24) to -06
    *  Add list of contributors in Acknowledgments.
 
    *  Added minimal Security Considerations section.
-
-
-
-
-
-Sayre                     Expires 23 April 2026                [Page 20]
-
-Internet-Draft               Core Email A/S                 October 2025
-
 
 A.8.  Changes from draft-ietf-emailcore-as-06 (2022-11-07) to -07
 
@@ -1150,6 +1170,14 @@ A.10.  Changes from draft-ietf-emailcore-as-08 (2023-12-18) to -09
 
 A.11.  Changes from draft-ietf-emailcore-as-09 (2024-07-02) to -10
 
+
+
+
+Sayre                     Expires 23 April 2026                [Page 21]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    *  Added Open Issues Section
 
    *  Removed placeholder for issue #38 - Clarify 78 octet limit versus
@@ -1168,15 +1196,6 @@ A.12.  Changes from draft-ietf-emailcore-as-10 (2024-07-03) to -11
 
    *  Added Open Issue #94 - Use of Quoted Strings (https://github.com/
       ietf-wg-emailcore/emailcore/issues/94)
-
-
-
-
-
-Sayre                     Expires 23 April 2026                [Page 21]
-
-Internet-Draft               Core Email A/S                 October 2025
-
 
 A.13.  Changes from draft-ietf-emailcore-as-11 (2024-10-21) to -12
 
@@ -1201,11 +1220,19 @@ A.13.  Changes from draft-ietf-emailcore-as-11 (2024-10-21) to -12
 A.14.  Changes from draft-ietf-emailcore-as-12 (2024-11-09) to -13
 
    *  Fixed discussion of Punycode (domain-part -> local-part) in
-      Section 5.2
+      Section 4.2
 
    *  Removed Keywords from discussion in Section 3.1
 
    *  Added example of empty display-name in Section 3.1
+
+
+
+
+Sayre                     Expires 23 April 2026                [Page 22]
+
+Internet-Draft               Core Email A/S                 October 2025
+
 
 A.15.  Changes from draft-ietf-emailcore-as-13 (2025-01-30) to -14
 
@@ -1216,23 +1243,13 @@ A.15.  Changes from draft-ietf-emailcore-as-13 (2025-01-30) to -14
       ietf-wg-emailcore/emailcore/issues/94)
 
    *  Applied (with some editorial changes), Tero Kivinen's proposed
-      text to Section 7.
+      text to Section 6.
 
 A.16.  Changes from draft-ietf-emailcore-as-14 (2025-02-27) to -15
 
    *  Miscellaneous editorial changes
 
 A.17.  Changes from draft-ietf-emailcore-as-15 (2025-03-18) to -16
-
-
-
-
-
-
-Sayre                     Expires 23 April 2026                [Page 22]
-
-Internet-Draft               Core Email A/S                 October 2025
-
 
    *  Changed "FOR clause MUST NOT be generated if the message copy is
       associated with multiple recipients from multiple SMTP RCPT
@@ -1265,6 +1282,14 @@ A.18.  Changes from draft-ietf-emailcore-as-16 to -17
 
 A.19.  Changes from draft-ietf-emailcore-as-17 to -18
 
+
+
+
+Sayre                     Expires 23 April 2026                [Page 23]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
    *  Added text clarifying that hop-by-hop confidentiality does not
       guarantee end-to-end confidentiality.
 
@@ -1281,14 +1306,6 @@ A.20.  Changes from draft-ietf-emailcore-as-18 to -19
    *  Rewrote text discussing use of email addresses in HTML forms and
       provided a more restricted Mailbox ABNF (issue #137
       (https://github.com/ietf-wg-emailcore/emailcore/issues/137))
-
-
-
-
-Sayre                     Expires 23 April 2026                [Page 23]
-
-Internet-Draft               Core Email A/S                 October 2025
-
 
 A.21.  Changes from draft-ietf-emailcore-as-19 to -20
 
@@ -1311,7 +1328,7 @@ A.21.  Changes from draft-ietf-emailcore-as-19 to -20
 
 A.22.  Changes from draft-ietf-emailcore-as-20 to -21
 
-   *  Restructured Section 5.4 and eliminated the dependency of the
+   *  Restructured Section 4.4 and eliminated the dependency of the
       discussion on deviations from the core email specs on, e.g.,
       various versons of HTML.
       Added new Section 4.4, and eliminated references that are now
@@ -1321,13 +1338,21 @@ A.22.  Changes from draft-ietf-emailcore-as-20 to -21
 
 A.23.  Changes from draft-ietf-emailcore-as-21 to -22
 
-   *  Rewrote Section 5.4 to further reflect the "there are problems out
+
+
+
+Sayre                     Expires 23 April 2026                [Page 24]
+
+Internet-Draft               Core Email A/S                 October 2025
+
+
+   *  Rewrote Section 4.4 to further reflect the "there are problems out
       there" approach, further reducing the dependencies associated with
       HTML.  Re-integrated the Section 4.4 material that was separated
       in -21.
 
-   *  Rewrote and reorganized Section 7, grouping TLS-related material
-      into another layer of subsections (Section 7.1) and applying a set
+   *  Rewrote and reorganized Section 6, grouping TLS-related material
+      into another layer of subsections (Section 6.1) and applying a set
       of changes agreed by the WG.
 
    *  Numerous, but individually minor, editorial adjustments and
@@ -1338,16 +1363,8 @@ A.24.  Changes from draft-ietf-emailcore-as-22 to -23
    *  Corrected an error in which IDNA2008 documents were cited rather
       than SMTPUTF8 ones and tuned text slightly.
 
-
-
-
-Sayre                     Expires 23 April 2026                [Page 24]
-
-Internet-Draft               Core Email A/S                 October 2025
-
-
    *  Tuned discussions of S/MIME, PGP, and RFC 9788 slightly, including
-      new text in Section 7.4
+      new text in Section 6.4
 
    *  Corrected an error in the description of Opportunistic TLS.
 
@@ -1359,7 +1376,7 @@ A.25.  Changes from draft-ietf-emailcore-as-23 to -24
       warn people that would be coming.
 
    *  Added a brief description/ comments about group syntax
-      (Section Section 4.
+      (Section Section 3.3.
 
    *  Small editorial correction.
 
@@ -1373,23 +1390,6 @@ Author's Address
 
    Robert Sayre (editor)
    Email: sayrer@gmail.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

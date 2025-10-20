@@ -156,6 +156,7 @@
       in active use. The protocols and formats for mail transport and
       message formats have evolved slowly over the years. This Applicability
       Statement describes interaction with newer protocols.</t>
+      <t>[Provided as a diff to the WG document]</t>
 	</abstract>
   </front>
 
@@ -173,7 +174,19 @@
       <xref target="I-D.ietf-emailcore-rfc5322bis">Internet Message
 		 Format (IMF)</xref>,
       </t>
+      <section numbered="true" toc="default">
+        <name>Conventions Used in This Document</name>
+        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+        NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+        "MAY", and "OPTIONAL" in this document are to be interpreted as
+        described in BCP 14
+        <xref target="RFC2119"/>
+          <xref target="RFC8174"/>
+        when, and only when, they appear in all capitals, as shown
+        here.</t>
+      </section>
     </section>
+
     <section numbered="true" toc="default">
       <name>Applicability of Some SMTP Provisions</name>
       <t>Since<xref target="RFC5321"/> was
@@ -347,8 +360,6 @@
           <xref target="I-D.ietf-emailcore-rfc5322bis"/>.</t>
         </section>
       </section>
-    </section>
-
 	  <section numbered="true" toc="default" anchor="GroupSyntax">
 		 <name> Group Syntax </name>
 		 <t> "Group" syntax
@@ -361,6 +372,7 @@
 			the specifications but not be supported by some
 			implementations.</t>
 	  </section>
+    </section>
 
     <section numbered="true" toc="default">
       <name>Email Addresses</name>
